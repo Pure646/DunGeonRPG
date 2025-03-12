@@ -1,0 +1,61 @@
+기능	함수
+보간 (Lerp)	Mathf.Lerp(), Mathf.SmoothStep(), Mathf.LerpAngle()
+이동 (속도 조절)	Mathf.MoveTowards(), Mathf.SmoothDamp()
+값 제한 (Clamp)	Mathf.Clamp(), Mathf.Clamp01()
+반복 (Loop)	Mathf.Repeat(), Mathf.PingPong()
+랜덤 & 노이즈	Mathf.PerlinNoise()
+각도 & 회전	Mathf.DeltaAngle(), Mathf.Deg2Rad, Mathf.Rad2Deg
+
+[ Mathf.Lerp(a, b, t) ]		-> 선형 보간
+a  	: (시작 값) → 변화가 시작하는 값
+b 	: (목표 값) → 변화가 끝나는 값
+t  	: (비율 값 / 시간 값) → 현재 위치(0 ~ 1 사이) 		// t : 0.5 = 50%	// t : 0.25 = 25%
+-- float result = Mathf.Lerp(0, 10, 0.5f);
+-- Debug.Log(result); 						// 출력 : 5
+
+
+[ Mathf.LerpAngle(a, b, t) ] 		-> 각도 보간
+a	: (시작 각도)
+b	: (목표 각도)
+t	: (비율 값)
+-- float angle = Mathf.LerpAngle(350, 10, 0.5f);
+-- Debug.Log(angle); 						// 출력: 0
+
+
+[ Mathf.SmoothStep(a, b, t) ]		-> 부드러운 보간
+a	: (시작 값)
+b 	: (목표 값)
+t	: (비율 값)
+-- float smooth = Mathf.SmoothStep(0, 10, 0.5f);
+-- Debug.Log(smooth); 					// 출력: 약 5 (하지만 부드럽게 변함)
+
+[ Mathf.Clamp(value, min, max) ]
+[ Mathf.Clamp01(value) ] 		-> 값 제한(0~1 범위 유지)
+[ Mathf.Repeat(t, length) ] 		→ 값이 반복되도록 제한
+[ Mathf.PingPong(t, length) ] 	→ 왕복하는 반복 값
+[ Mathf.DeltaAngle(a, b) ]		→ 두 각도 차이 계산
+[ Mathf.PerlinNoise(x, y) ] 		→ 부드러운 랜덤 값 생성
+[ Mathf.Abs(value) ] 		→ 절댓값 반환
+[ Mathf.Sign(value) ] 		→ 양수/음수 판별
+[ Mathf.Deg2Rad ], [ Mathf.Rad2Deg ]	→ 각도 변환
+
+[ Mathf.MoveTowards(a, b, maxDelta) ]	-> 현재값에서 이동하고 목표값보다 높다면 자동 목표값으로 조정된다.
+a 	: (현재 값)
+b	: (목표 값)
+maxDelta : (최대 이동량)
+-- float value = Mathf.MoveTowards(0, 10, 2);
+-- Debug.Log(value); 					// 출력: 2 (최대 2만큼 이동)
+
+-- float value = Mathf.MoveTowards(9, 10, 2);
+-- Debug.Log(value); 					// 출력: 10 (목표 값 도달)
+
+-- float value = Mathf.MoveTowards(10, 0, 3);
+-- Debug.Log(value);					// 출력: 7 (현재값에서 목표값으로 향해 3만큼 이동)
+
+
+[ Mathf.MoveTowardsAngle(a, b, maxDelta) ]
+a 	: (현재 각도)
+b	: (목표 각도)
+maxDelta	: (최대 이동각도)
+-- float angle = Mathf.MoveTowardsAngle(350, 10, 5);
+-- Debug.Log(angle);					// 출력: 355 (반대 방향으로 이동 방지)

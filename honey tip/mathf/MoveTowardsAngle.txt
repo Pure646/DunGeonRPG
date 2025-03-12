@@ -1,0 +1,9 @@
+[ Mathf.MoveTowardsAngle(a, b, maxDelta) ]
+
+a 	: (현재 각도)
+b	: (목표 각도)
+maxDelta	: (최대 이동각도)
+
+ex)
+float angle = Mathf.MoveTowardsAngle(350, 10, 5);
+Debug.Log(angle);					// 출력: 355 (반대 방향으로 이동 방지)

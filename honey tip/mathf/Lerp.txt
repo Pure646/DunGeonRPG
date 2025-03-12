@@ -1,0 +1,20 @@
+[ Mathf.Lerp(a, b, t) ]		-> 선형 보간
+
+a  	: (시작 값) → 변화가 시작하는 값
+b 	: (목표 값) → 변화가 끝나는 값
+t  	: (비율 값 / 시간 값) → 현재 위치(0 ~ 1 사이) 		// t : 0.5 = 50%	// t : 0.25 = 25%
+
+ex)
+float result = Mathf.Lerp(0, 10, 0.5f);
+Debug.Log(result); 						// 출력 : 5
+
+
+[ Mathf.LerpAngle(a, b, t) ] 		-> 각도 보간
+
+a	: (시작 각도)
+b	: (목표 각도)
+t	: (비율 값)
+
+ex)
+float angle = Mathf.LerpAngle(350, 10, 0.5f);
+Debug.Log(angle); 						// 출력: 0

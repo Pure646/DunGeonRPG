@@ -1,0 +1,17 @@
+[ Mathf.MoveTowards(a, b, maxDelta) ]	-> 현재값에서 이동하고 목표값보다 높다면 자동 목표값으로 조정된다.
+
+a 	: (현재 값)
+b	: (목표 값)
+maxDelta : (최대 이동량)
+
+ex)
+float value = Mathf.MoveTowards(0, 10, 2);
+Debug.Log(value); 					// 출력: 2 (최대 2만큼 이동)
+
+ex)
+float value = Mathf.MoveTowards(9, 10, 2);
+Debug.Log(value); 					// 출력: 10 (목표 값 도달)
+
+ex)
+float value = Mathf.MoveTowards(10, 0, 3);
+Debug.Log(value);					// 출력: 7 (현재값에서 목표값으로 향해 3만큼 이동)

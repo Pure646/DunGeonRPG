@@ -1,0 +1,9 @@
+[ Mathf.SmoothStep(a, b, t) ]		-> 부드러운 보간
+
+a	: (시작 값)
+b 	: (목표 값)
+t	: (비율 값)
+
+ex)
+float smooth = Mathf.SmoothStep(0, 10, 0.5f);
+Debug.Log(smooth); 			// 출력: 약 5 (하지만 부드럽게 변함)
