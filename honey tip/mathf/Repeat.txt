@@ -1,0 +1,15 @@
+[ Mathf.Repeat(float value , float maxValue) ] 		-> 결과값이 0이상 나오게 하기 위한 % 개념
+
+value		: 반복할 값
+maxValue		: 값을 반복시킬 범위의 최대값
+
+- value가 maxValue보다 클 경우, 그 차이를 이용해 값을 다시 0부터 시작하게 만들어 준다.
+- 게임에서 주로 애니메이션을 순환시키거나, 위치 값을 특정 구간 내에서 반복시키는 데 유용
+
+ex)
+float result = Mathf.Repeat(5.5f, 3f);
+Debug.Log(result); 				// 출력값: 2.5 (5.5를 3으로 나눈 나머지를 계산한 결과)
+
+ex)
+float result = Mathf.Repeat(-5f, 3f);		// -5 - (-2 * 3) = 1
+Debug.Log(result);				// 출력값: 1
