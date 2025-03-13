@@ -1,0 +1,28 @@
+[ Mathf.FloorToInt(num) ]		-> 소수점을 내림한 값을 정수로 반환 (int형 타입으로 결과값 반환)
+
+num 	: 입력할 숫자
+
+ex)
+float num = 3.141592441235f;
+int result = Mathf.FloorToInt(num);
+Debug.Log(result); 				// 출력 : 3
+
+
+[ Mathf.RoundToInt(num) ]		-> 소수점을 반올림 한 값 (int형 타입으로 결과값 반환)
+
+num 	: 입력할 숫자
+
+ex)
+float num = 3.141592441235f;
+int result = Mathf.RoundToInt(num);
+Debug.Log(result); 				// 출력 : 3
+
+
+[ Mathf.CeilToInt(num) ]		-> 소수점을 올림 한 값 (int형 타입으로 결과값 반환)
+
+num	: 입력할 숫자
+
+ex)
+float num = 3.141592;
+int result = Mathf.CeilToInt(num);
+Debug.Log(result);				// 출력 : 4

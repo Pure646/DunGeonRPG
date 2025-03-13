@@ -1,0 +1,113 @@
+F 	-> 고정 소수점 형식 (Fixed-Point)
+
+F는 소수점 자리를 고정시키고, 소수점 이하 자릿수를 지정할 수 있어요.
+예: "F2"는 소수점 2자리까지 표시
+
+ex)
+float num = 3.141592f;
+string result = num.ToString("F2");  		// 소수점 2자리까지 표시
+Debug.Log(result); 				// 출력: "3.14"
+
+
+N 	-> 숫자 형식 (Number)
+
+N은 천 단위 구분 기호를 추가하고, 소수점 자릿수를 지정할 수 있어요.
+예: "N1"은 첫번째 소수점 표기 + 천 단위 구분 기호를 표시.
+
+ex)
+int number = 1234567;
+string result = number.ToString("N0");
+Debug.Log(result); 				// 출력: "1,234,567"
+
+
+
+C 	-> 통화 형식 (Currency)
+
+C는 통화 형식으로 값을 표시합니다. 기본적으로 지역에 맞는 통화 기호가 자동으로 붙어요.
+예: "C"는 통화 표시
+
+ex)
+float money = 1234.56f;
+string result = money.ToString("C");  		// 통화 형식
+Debug.Log(result); 				// 출력: "$1,234.56" (미국 기준)
+
+
+P 	-> 퍼센트 형식 (Percentage)
+
+P는 백분율 형식으로 출력하고, 숫자를 100배해서 표시합니다.
+예: "P2"는 소수점 2자리까지 백분율로 표시
+
+ex)
+float percent = 0.85f;
+string result = percent.ToString("P2");  	// 백분율 형식, 소수점 2자리
+Debug.Log(result); 				// 출력: "85.00%"
+
+
+E 	-> 지수 형식 (Exponential)
+
+E는 지수 형식으로 숫자를 표시합니다.
+예: "E2"는 지수 형식으로 소수점 2자리까지 표시.
+
+ex)
+float largeNumber = 1234567.89f;
+string result = largeNumber.ToString("E2");  	// 지수 형식
+Debug.Log(result); 				// 출력: "1.23E+06"
+
+
+0 	-> 숫자 자릿수 지정
+
+0은 최소 자릿수를 지정하고, 부족한 자릿수는 0으로 채운 형식이에요.
+예: "00000"은 5자리 숫자를 출력하고, 부족한 자리는 0으로 채움
+
+ex)
+int number = 42;
+string result = number.ToString("00000");  	// 5자리 숫자, 부족한 자리는 0으로 채움
+Debug.Log(result); 				// 출력: "00042"
+
+
+yyyy 	-> 연도 (4자리)
+
+ex)
+DateTime now = DateTime.Now;
+string formattedDate = now.ToString("yyyy");  		// 연도만 출력
+Debug.Log(formattedDate); 				// 출력: "2025"
+
+
+MM 	-> 월 (2자리)
+
+ex)
+DateTime now = DateTime.Now;
+string formattedDate = now.ToString("MM");  		// 월만 출력
+Debug.Log(formattedDate); 				// 출력: "03"
+
+
+dd 	-> 일 (2자리)
+
+ex)
+DateTime now = DateTime.Now;
+string formattedDate = now.ToString("dd");  		// 일만 출력
+Debug.Log(formattedDate); 				// 출력: "13"
+
+
+hh	-> 시 (2자리)
+
+ex)
+DateTime now = DateTime.Now;
+string formattedDate = now.ToString("hh");  		// 12시간제로 시만 출력
+Debug.Log(formattedDate); 				// 출력: "07"
+
+
+mm	-> 분 (2자리)
+
+ex)
+DateTime now = DateTime.Now;
+string formattedDate = now.ToString("mm");  		// 분만 출력
+Debug.Log(formattedDate); 				// 출력: "30"
+
+
+ss	-> 초 (2자리)
+
+ex)
+DateTime now = DateTime.Now;
+string formattedDate = now.ToString("ss");  		// 초만 출력
+Debug.Log(formattedDate); 				// 출력: "45"

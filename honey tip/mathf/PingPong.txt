@@ -1,0 +1,18 @@
+[ Mathf.PingPong(t, value) ]
+
+t	: 이동하는 값.(변화 값)
+length	: 값이 반복되는 범위(최소값과 최대값을 설정하는 것)
+
+- t 값이 length 를 넘어서면 0으로 돌아가서 다시 시작한다.
+
+ex)
+void Update()
+{
+    if (Input.GetKeyDown(KeyCode.F))
+    {
+        TimeSet();
+        value = Mathf.PingPong(intTime, 9f);
+        Debug.Log(value);
+    }
+}
+//출력 : 0 ,1 ,2 ,3 ,4 ,5 ,6 ,7 ,8 ,9, 8, 7, 6 ,5 ,4 ,3 ,2 ,1 ,0 ,...
