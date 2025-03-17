@@ -1,0 +1,23 @@
+[ Mathf.PI ]		-> 1 라디안
+
+Mathf.PI		= π (3.141592....)
+
+
+[ Mathf.Deg2Rad ]		-> 각도를 도(degrees) 에서 라디안(radians) 으로 변환해주는 상수
+
+Mathf.Deg2Rad 	= π / 180 의 값으로 , 각도를 라디안으로 변환하는 값
+
+ex)
+float degree = 60f;
+float radian = degree * Mathf.Deg2Rad;  	// 60도를 라디안으로 변환
+Debug.Log(radian);  			// 결과: 1.0472 (π / 3)
+
+
+[ Mathf.Rad2Deg ]		-> 라디안(radians) 에서 도(degrees) 로 변환해주는 상수
+
+Mathf.Rad2Deg	= 180 / π 의 값으로 , 라디안을 각도로 변환하는 값
+
+ex)
+float radian = Mathf.PI / 3;  			// 1라디안 = π/3
+float degree = radian * Mathf.Rad2Deg;  	// 라디안을 도로 변환
+Debug.Log(degree);  			// 결과: 60 (60도)

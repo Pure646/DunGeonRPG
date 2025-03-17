@@ -9,13 +9,15 @@ public class MathfExample : MonoBehaviour
     
     void Update()
     {
-        
+        TimeSet();
+        mathfPingpong();
     }
+
     private void TimeSet()
     {
         intTime = (int)Time.time;
     }
-    private void Pingpong()
+    private void mathfPingpong()
     {
         value = Mathf.PingPong(intTime, 9f);
         Debug.Log(value);

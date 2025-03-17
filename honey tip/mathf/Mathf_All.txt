@@ -15,6 +15,3 @@
 
 [ Mathf.DeltaAngle(a, b) ]		→ 두 각도 차이 계산
 [ Mathf.PerlinNoise(x, y) ] 		→ 부드러운 랜덤 값 생성
-[ Mathf.Abs(value) ] 		→ 절댓값 반환
-[ Mathf.Sign(value) ] 		→ 양수/음수 판별
-[ Mathf.Deg2Rad ], [ Mathf.Rad2Deg ]	→ 각도 변환

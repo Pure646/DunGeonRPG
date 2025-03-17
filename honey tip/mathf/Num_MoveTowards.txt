@@ -15,3 +15,14 @@ Debug.Log(value); 					// 출력: 10 (목표 값 도달)
 ex)
 float value = Mathf.MoveTowards(10, 0, 3);
 Debug.Log(value);					// 출력: 7 (현재값에서 목표값으로 향해 3만큼 이동)
+
+
+[ Mathf.MoveTowardsAngle(a, b, maxDelta) ]	-> 각도 자동 조정
+
+a 	: (현재 각도)
+b	: (목표 각도)
+maxDelta	: (최대 이동각도)
+
+ex)
+float angle = Mathf.MoveTowardsAngle(350, 10, 5);
+Debug.Log(angle);					// 출력: 355 (반대 방향으로 이동 방지)

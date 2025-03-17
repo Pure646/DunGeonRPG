@@ -1,0 +1,65 @@
+[ Mathf.Abs(num) ]		-> 절댓값 반환
+
+num 	: 숫자
+
+하나의 숫자가 음수라면 양수로 출력
+
+ex)
+Mathf.Abs(-15);						//출력 : 15
+
+
+[ Mathf.Sign(num) ]		-> 부호 반환
+
+num 	: 숫자
+
+하나의 숫자가 음수라면 -1 로 출력, 양수라면 +1로 출력
+
+ex)
+Mathf.Sign(-123);						//출력 : -1
+Mathf.Sign(145);						//출력 : 1
+
+
+[ Mathf.Min(num1, num2, num3 , ...) ]		-> 가장 작은 값 반환
+
+num 	: 숫자
+
+여러개의 숫자 중에서 가장 작은 값만 출력한다.
+
+ex)
+Mathf.Min(4f, 25f, 12f);					//출력 : 4
+
+
+[ Mathf.Max(num1, num2, num3, ...) ]		-> 가장 큰 값 반환
+
+num	: 숫자
+
+여러개의 숫자 중에서 가장 큰 값만 출력한다.
+
+ex)
+Mathf.Max(13f, 42f, 48f);					//출력 : 48
+
+
+[ Mathf.Clamp(value, min, max) ] 	-> 방지
+
+value		: 제한할 값
+min		: 최소 값 (최소값보다 작으면 이 값 반환)
+max		: 최대 값 (최대값보다 크면 이 값 반환)
+
+min < value < max 라면 value로 출력 , max 값보다 높거나 같다면 max 값으로 출력, min 값 보다 낮거나 같다면 min 값으로 출력
+
+ex)
+float speed = 15f;
+float minSpeed = 5f;
+float maxSpeed = 10f;
+
+float clampedSpeed = Mathf.Clamp(speed, minSpeed, maxSpeed);
+Debug.Log(clampedSpeed); 					// 출력: 10
+
+
+[ Mathf.Clamp01(value) ]
+값을 0~1 범위로 제한하는 함수
+
+ex)
+float progress = Mathf.Clamp01(1.5f);  			// 결과: 1
+float progress2 = Mathf.Clamp01(-0.2f); 			// 결과: 0
+float progress3 = Mathf.Clamp01(0.5f);  			// 결과: 0.5

@@ -1,3 +1,27 @@
+[ Mathf.Floor(num) ]		-> 내림 (작은 정수로)
+
+num	: 숫자
+
+ex)
+Mathf.Floor(3.7f);				// 출력 : 3
+
+
+[ Mathf.Round(num) ]		-> 올림 (큰 정수로)
+
+num	: 숫자
+
+ex)
+Mathf.Round(3.5f);				// 출력 : 4
+
+
+[ Mathf.Ceil(num) ]
+
+num 	: 숫자
+
+ex)
+Mathf.Ceil(2.1f);				// 출력 : 2
+
+
 [ Mathf.FloorToInt(num) ]		-> 소수점을 내림한 값을 정수로 반환 (int형 타입으로 결과값 반환)
 
 num 	: 입력할 숫자

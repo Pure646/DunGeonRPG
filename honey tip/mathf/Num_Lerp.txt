@@ -9,6 +9,7 @@ float result = Mathf.Lerp(0, 10, 0.5f);
 Debug.Log(result); 						// 출력 : 5
 
 
+
 [ Mathf.LerpAngle(a, b, t) ] 		-> 각도 보간
 
 a	: (시작 각도)
@@ -18,3 +19,4 @@ t	: (비율 값)
 ex)
 float angle = Mathf.LerpAngle(350, 10, 0.5f);
 Debug.Log(angle); 						// 출력: 0
+

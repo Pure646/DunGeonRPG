@@ -1,0 +1,64 @@
+[ Mathf.Sin(num) ]		-> 사인값 반환
+
+num 	: 숫자
+
+ex)
+Mathf.Sin(0)				// 출력 : 0
+Mathf.Sin(30)				// 출력 : 1 / 2 = 0.5
+Mathf.Sin(45)				// 출력 : √2 / 2
+Mathf.Sin(60)				// 출력 : √3 / 2
+Mathf.Sin(90)				// 출력 : 1
+
+
+[ Mathf.Cos(num) ]		-> 코사인 반환
+
+num	: 숫자
+
+ex)
+Mathf.Cos(0)				// 출력 : 1
+Mathf.Cos(30)				// 출력 : √3 / 2
+Mathf.Cos(45)				// 출력 : √2 / 2
+Mathf.Cos(60)				// 출력 : 1 / 2
+Mathf.Cos(90)				// 출력 : 0
+
+
+[ Mahtf.Tan(num) ]		-> 탄젠트값 반환
+
+num 	: 숫자
+
+ex)
+Mathf.Tan(0)				// 출력 : 0
+Mathf.Tan(30)				// 출력 : √3 / 3
+Mathf.Tan(45)				// 출력 : 1
+Mathf.Tan(60)				// 출력 : √3
+Mathf.Tan(90)				// 출력 : Infinity
+
+
+[ Mathf.Asin(num) ] 	-> 아크사인 값 반환
+
+num	: -1부터 1사이의 값, 반환 값은 라디안 단위로 각도를 제공
+
+출력값의 범위는 -π/2에서 π/2 사이 (즉, -90도에서 90도).
+
+ex)
+float angle = Mathf.Asin(1);  			// 결과: 1.5708 (π / 2 = sin(90))
+
+
+[ Mathf.Acos(num) ]	-> 아크코사인 값 반환
+
+num 	: -1 부터 1사이의 값, 반환 값은 라디안 단위로 각도를 제공
+
+출력값의 범위는 0에서 π 사이 (즉, 0도에서 180도).
+
+ex)
+float angle = Mathf.Acos(1);  		// 결과: 0 (0도 = cos(90))
+
+
+[ Mathf.Atan(num) ]	-> 아크탄젠트 값 반환
+
+num 	: 숫자
+
+출력값의 범위는 -π/2에서 π/2 사이 (즉, -90도에서 90도).
+
+ex)
+float angle = Mathf.Atan(1);  		// 결과: 0.7854 ( π / 4 = tan(45) )
