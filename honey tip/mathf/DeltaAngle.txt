@@ -1,0 +1,13 @@
+[ Mathf.DeltaAngle(float currnetAngle, float targetAngle) ] 		-> 두 각도의 차이
+
+currentAngle		: 현재 각도
+targetAngle		: 목표 각도
+
+- currentAngle 각도와 targetAngle 각도의 사이 각도 차이를 반환 한다.
+
+ex)
+float currentAngle = 350f;
+float targetAngle = 10f;
+
+float angleDifference = Mathf.DeltaAngle(currentAngle, targetAngle);
+Debug.Log(angleDifference);  				// 출력: -20

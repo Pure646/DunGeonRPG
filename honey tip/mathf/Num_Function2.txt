@@ -1,0 +1,43 @@
+[ Mathf.Pow(num1, num2) ] 	-> 거듭제곱
+
+num1		: 숫자
+num2		: 승 수
+
+ex)
+Mathf.Pow(10, 5);			// 출력 : 10의 5승 = 100000
+
+
+[ Mathf.Sqrt(num) ]		-> 제곱근 (루트)
+
+num		: 숫자
+
+ex)
+Mathf.Sqrt(64)			// 출력 : 8
+
+
+
+[ Mathf.Exp(num) ]		-> e^(num)
+
+num		: 승 수
+
+-[ e = 2.71828182846 ]
+
+ex)
+Mathf.Exp(3);			// 출력 : e의 3승 = 20.08554...
+
+
+[ Mathf.Log(num1, num2) ]	-> Log
+
+num1		: 지수
+num2		: 밑의 수
+
+ex)
+Mathf.Log(16, 2);			// 출력 : 4
+
+
+[ Mathf.Log10(num) ]	-> Log10
+
+num 		: 지수
+
+ex)
+Mathf.Log10(1000);			// 출력 : 3

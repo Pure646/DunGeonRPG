@@ -11,7 +11,3 @@
 랜덤 & 노이즈		Mathf.PerlinNoise()
 
 각도 & 회전		Mathf.DeltaAngle(), Mathf.Deg2Rad, Mathf.Rad2Deg
-
-
-[ Mathf.DeltaAngle(a, b) ]		→ 두 각도 차이 계산
-[ Mathf.PerlinNoise(x, y) ] 		→ 부드러운 랜덤 값 생성

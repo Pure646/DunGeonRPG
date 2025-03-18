@@ -1,0 +1,6 @@
+[ Random.value ]
+
+- 0.0 과 1.0 사이의 임의의 부동소수점 숫자를 반환합니다.
+
+ex)
+float randomValue = Random.value;			// 0 ~ 1 사이의 랜덤 값

@@ -1,0 +1,18 @@
+[ Random.Range(min, max) ]
+
+min		: 최소값
+max 		: 최대값
+
+- 주어진 범위 사이에서 임의의 값을 반환합니다.
+- int 범위일 경우, min과 max는 포함되지 않으며,
+- float 범위일 경우, min은 포함되고 max는 포함되지 않습니다
+
+ex)
+int randomInt = Random.Range(0, 10);  		// 0 ~ 9 사이의 정수
+float randomFloat = Random.Range(0f, 1f); 	 	// 0.0 ~ 1.0 사이의 실수
+
+
+[ Random.RandomRangeInt(min, max) ] 
+
+- int 범위에서 랜덤 값을 반환합니다
+- Random.Range(min, max)와 동일하지만, int를 반환하는 구체적인 방법입니다

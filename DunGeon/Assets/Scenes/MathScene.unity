@@ -131,8 +131,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 478502532}
-  - component: {fileID: 478502531}
-  - component: {fileID: 478502533}
   m_Layer: 0
   m_Name: Math
   m_TagString: Untagged
@@ -140,20 +138,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &478502531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478502530}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63305e352211590419008b38ad1c2b89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intTime: 0
-  value: 3
 --- !u!4 &478502532
 Transform:
   m_ObjectHideFlags: 0
@@ -169,20 +153,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &478502533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478502530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a93dc2192fb6f4c4d94bf8fa26adf3e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  num: 0
-  pi: 3.1415927
 --- !u!1 &1643243843
 GameObject:
   m_ObjectHideFlags: 0
