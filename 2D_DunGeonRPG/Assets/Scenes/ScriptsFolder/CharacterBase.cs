@@ -4,30 +4,75 @@ using UnityEngine;
 
 public class CharacterBase : MonoBehaviour
 {
+    private Animator anime;
     private Rigidbody2D rigid;
-    public float MaxSpeed;
+    private bool OnGround;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        anime = GetComponent<Animator>();
     }
-
+    private void OnEnable()
+    {
+        InputSystem.OnJump += Jumping;
+        InputSystem.StopMove += StopMovement;
+    }
+    private void OnDisable()
+    {
+        InputSystem.OnJump -= Jumping;
+        InputSystem.StopMove -= StopMovement;
+    }
+    private void Update()
+    {
+        TransRotation();
+        CharacterAnime();
+    }
     private void FixedUpdate()
     {
-        float InputX = Input.GetAxis("Horizontal");
-
-        rigid.AddForce(Vector2.right * InputX , ForceMode2D.Impulse);
-
-        if(rigid.velocity.x > MaxSpeed )
+        rigid.AddForce(InputSystem.Instance.Move, ForceMode2D.Impulse);
+    }
+    private void StopMovement()
+    {
+        rigid.velocity = new Vector2(rigid.velocity.normalized.x, rigid.velocity.y);
+    }
+    public float JumpingPower;
+    private void Jumping()
+    {
+        rigid.AddForce(Vector2.up * JumpingPower,ForceMode2D.Impulse);
+    }
+    private void CharacterAnime()
+    {
+        anime.SetFloat("Magnitude", InputSystem.Instance.Move.magnitude);
+    }
+    private void TransRotation()
+    {
+        if(OnGround)
         {
-            rigid.velocity = new Vector2(MaxSpeed, rigid.velocity.y);
-        }
-        else if(rigid.velocity.x < MaxSpeed*(-1))
-        {
-            rigid.velocity = new Vector2(MaxSpeed * (-1), rigid.velocity.y);
+            if(InputSystem.Instance.Move.x > 0f)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            else if(InputSystem.Instance.Move.x < 0f)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
         }
     }
 
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Ground"))
+        {
+            OnGround = true;
+        }
+    }
+    private void OnCollisionExis2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Ground"))
+        {
+            OnGround = false;
+        }
+    }
 
 }

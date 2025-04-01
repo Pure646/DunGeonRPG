@@ -1,0 +1,6 @@
+float move = Input.GetAxis("Horizontal"); // 값이 -1, 0, 1 사이의 부드러운 값
+transform.Translate(Vector3.right * move * speed * Time.deltaTime);
+
+// 즉시 반응하는 움직임
+float moveRaw = Input.GetAxisRaw("Horizontal"); // 값이 -1, 0, 1로 즉시 반응
+transform.Translate(Vector3.right * moveRaw * speed * Time.deltaTime);
