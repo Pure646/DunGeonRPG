@@ -11,6 +11,7 @@ public class InputSystem : MonoBehaviour
 
     public static event Action OnJump;
     public static event Action StopMove;
+    public static event Action WalkMove;
     private void Awake()
     {
         if(Instance == null)
@@ -22,7 +23,10 @@ public class InputSystem : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+    private void Start()
+    {
 
+    }
     private void Update()
     {
         Movement();
@@ -33,6 +37,13 @@ public class InputSystem : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             OnJump?.Invoke();
+        }
+    }
+    private void FixedUpdate()
+    {
+        if(Input.GetButton("Horizontal"))
+        {
+            WalkMove?.Invoke();
         }
     }
     private void Movement()
