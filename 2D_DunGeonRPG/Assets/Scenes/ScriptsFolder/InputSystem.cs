@@ -30,10 +30,6 @@ public class InputSystem : MonoBehaviour
     private void Update()
     {
         Movement();
-        if(Input.GetButtonUp("Horizontal"))
-        {
-            StopMove?.Invoke();
-        }
         if(Input.GetKeyDown(KeyCode.Space))
         {
             OnJump?.Invoke();
@@ -52,6 +48,10 @@ public class InputSystem : MonoBehaviour
         if(Input.GetButton("Horizontal"))
         {
             WalkMove?.Invoke();
+        }
+        if (Input.GetButtonUp("Horizontal"))
+        {
+            StopMove?.Invoke();
         }
     }
     private void Movement()

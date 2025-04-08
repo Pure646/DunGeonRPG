@@ -1,0 +1,15 @@
+OverlapCircle: 원 형태로 충돌 감지.
+
+OverlapBox: 사각형 형태로 충돌 감지.
+
+OverlapPoint: 특정 점에서 충돌 감지.
+
+OverlapArea: 두 점으로 영역을 지정해 충돌 감지.
+
+Raycast: 레이를 이용해 충돌 감지.
+
+RaycastAll: 여러 충돌 객체를 한 번에 감지.
+
+Linecast: 두 점을 연결하는 직선 경로에서 충돌 감지.
+
+GetColliderContacts: 충돌한 모든 객체를 가져옴.

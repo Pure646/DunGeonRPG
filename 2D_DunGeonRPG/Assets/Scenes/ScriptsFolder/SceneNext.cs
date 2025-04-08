@@ -31,9 +31,9 @@ public class SceneNext : MonoBehaviour
     }
     private void Update()
     {
-        if(fixSeed != currentSeed)
+        if(fixSeed != currentSeed)          
         {
-            currentScene = SceneManager.GetActiveScene();
+            currentScene = SceneManager.GetActiveScene();       // Scene이 바뀌면서 바로 호출이 잘 안되어서 Update로 사용
             CurrentSceneCheck();
             fixSeed = currentSeed;
         }

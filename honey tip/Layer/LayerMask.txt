@@ -1,0 +1,13 @@
+LayerMask.GetMask(): 여러 레이어를 문자열로 한 번에 받아 비트마스크로 반환합니다.
+
+int layerMask = LayerMask.GetMask("Layer 8", "Layer 9");
+
+
+LayerMask.NameToLayer(): 레이어 이름을 숫자(인덱스)로 반환합니다. 예를 들어, "Player" 레이어의 번호를 알고 싶다면:
+
+int playerLayer = LayerMask.NameToLayer("Player");
+
+
+LayerMask.LayerToName(): 레이어 인덱스를 문자열로 반환합니다. 예를 들어, 8번 레이어의 이름을 알고 싶다면:
+
+string layerName = LayerMask.LayerToName(8);

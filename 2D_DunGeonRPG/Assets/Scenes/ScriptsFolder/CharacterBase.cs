@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CharacterBase : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class CharacterBase : MonoBehaviour
     private Rigidbody2D rigid;
     private bool OnGround;
     private int moreJump;
+    private bool OnAir;
 
     public int AddJump;
     public float characterSpeed;
@@ -41,12 +43,28 @@ public class CharacterBase : MonoBehaviour
     {
         CharacterAnime();
         CharacteraRotation();
+        Rayer();
     }
     private void FixedUpdate()
     {
 
     }
+    //public float rayLength = 1f;
+    private void Rayer()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.8f);
+        
+        if (hit.collider != null)
+        {
+            OnAir = false;
+            Debug.DrawRay((Vector2)transform.position, Vector2.down * 0.8f, Color.red);
+        }
+        else
+        {
+            OnAir = true;
+        }
 
+    }
     private void StopMovement()
     {
         rigid.velocity = new Vector2(0f, rigid.velocity.y);
@@ -80,6 +98,7 @@ public class CharacterBase : MonoBehaviour
     private void CharacterAnime()
     {
         anime.SetFloat("Magnitude", InputSystem.Instance.Move.magnitude);
+        anime.SetBool("Air", OnAir);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
