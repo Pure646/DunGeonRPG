@@ -12,20 +12,20 @@ public class InputSystem : MonoBehaviour
     public static event Action OnJump;
     public static event Action StopMove;
     public static event Action WalkMove;
+    public static event Action NextScene;
+    public static event Action JumpScene;
+    public static event Action FixedScene;
+
     private void Awake()
     {
         if(Instance == null)
         {
             Instance = this;
-        }
-        else
-        {
             DontDestroyOnLoad(gameObject);
         }
     }
     private void Start()
     {
-
     }
     private void Update()
     {
@@ -37,6 +37,14 @@ public class InputSystem : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             OnJump?.Invoke();
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            NextScene?.Invoke();
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            JumpScene?.Invoke();
         }
     }
     private void FixedUpdate()
@@ -50,6 +58,5 @@ public class InputSystem : MonoBehaviour
     {
         float InputX = Input.GetAxisRaw("Horizontal");
         move = Vector2.right * InputX;
-
     }
 }
