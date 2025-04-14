@@ -7,7 +7,6 @@ public class CharacterBase : MonoBehaviour
 {
     private Animator anime;
     private Rigidbody2D rigid;
-    private bool OnGround;
     private int moreJump;
     private bool InAir;
 
@@ -56,6 +55,7 @@ public class CharacterBase : MonoBehaviour
         if(Physics2D.Raycast((Vector2)transform.position, Vector2.down, rayLength, layermask))
         {
             InAir = false;
+            moreJump = AddJump;
         }
         else
         {
@@ -77,6 +77,10 @@ public class CharacterBase : MonoBehaviour
             rigid.AddForce(Vector2.up * JumpingPower, ForceMode2D.Impulse);
             moreJump -= 1;
         }
+        //if (InAir & InputSystem.Instance.Move.magnitude > 0)
+        //{
+        //    anime.Play("Walking", 0, 0.5f);
+        //}
     }
 
     private void CharacterMovement()
@@ -97,22 +101,22 @@ public class CharacterBase : MonoBehaviour
     private void CharacterAnime()
     {
         anime.SetFloat("Magnitude", InputSystem.Instance.Move.magnitude);
-        anime.SetBool("Air", InAir);
+        anime.SetBool("InAir", InAir);
+        
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.CompareTag("Ground"))
-        {
-            OnGround = true;
-            moreJump = AddJump;
-        }
-    }
-    private void OnCollisionExis2D(Collision2D collision)
-    {
-        if(collision.gameObject.CompareTag("Ground"))
-        {
-            OnGround = false;
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if(collision.gameObject.CompareTag("Ground"))
+    //    {
+                        
+    //    }
+    //}
+    //private void OnCollisionExis2D(Collision2D collision)
+    //{
+    //    if(collision.gameObject.CompareTag("Ground"))
+    //    {
+            
+    //    }
+    //}
 
 }

@@ -1,0 +1,18 @@
+animator.Play("B_AnimationStateName", 0, 0f);
+
+"B_AnimationStateName"		Animator에 등록된 상태 이름 (정확하게 입력!)
+0				레이어 인덱스 (보통은 0)
+0f				애니메이션 시작 시점 (0부터 재생하고 싶으면 0f)
+
+
+레이어 인덱스 
+Base Layer (0번)		기본 이동, 점프 등 메인 애니메이션
+UpperBodyLayer (1번)	상체 전용 (예: 총 쏘기, 손동작 등)
+FacialLayer (2번)		얼굴 표정 애니메이션
+
+
+애니메이션 시작 시점	-> "Normalized Time"
+0f			애니메이션 처음부터 시작
+0.5f			애니메이션 중간 시점
+1f			애니메이션 끝나는 시점 (보통 여기 도달하면 루프 X 상태는 끝남)
+
