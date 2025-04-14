@@ -9,9 +9,6 @@ public class InputSystem : MonoBehaviour
     public Vector2 Move => move;
     private Vector2 move;
 
-    public static event Action OnJump;
-    public static event Action StopMove;
-    public static event Action WalkMove;
     public static event Action NextScene;
     public static event Action JumpScene;
     public static event Action FixedScene;
@@ -30,10 +27,6 @@ public class InputSystem : MonoBehaviour
     private void Update()
     {
         Movement();
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            OnJump?.Invoke();
-        }
         if (Input.GetKeyDown(KeyCode.P))
         {
             NextScene?.Invoke();
@@ -45,18 +38,11 @@ public class InputSystem : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if(Input.GetButton("Horizontal"))
-        {
-            WalkMove?.Invoke();
-        }
-        if (Input.GetButtonUp("Horizontal"))
-        {
-            StopMove?.Invoke();
-        }
     }
     private void Movement()
     {
-        float InputX = Input.GetAxisRaw("Horizontal");
-        move = Vector2.right * InputX;
+        float InputX = Input.GetAxis("Horizontal");
+        float InputY = Input.GetAxis("Vertical");
+        move = new Vector2(InputX, InputY);
     }
 }

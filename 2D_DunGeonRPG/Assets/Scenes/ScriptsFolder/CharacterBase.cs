@@ -3,120 +3,95 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class CharacterBase : MonoBehaviour
+namespace DunGeonRPG
 {
-    private Animator anime;
-    private Rigidbody2D rigid;
-    private int moreJump;
-    private bool InAir;
+    public class CharacterBase : MonoBehaviour
+    {
+        private Animator anime;
+        private Rigidbody2D rigid;
 
-    public int AddJump;
-    public float characterSpeed;
-    public float JumpingPower;
 
-    private void Awake()
-    {
-        rigid = GetComponent<Rigidbody2D>();
-        anime = GetComponent<Animator>();
-    }
-    private void Start()
-    {
-        JumpingPower = 6f;
-        characterSpeed = 0.5f;
-        AddJump = 1;
-        moreJump = AddJump;
-    }
-    private void OnEnable()
-    {
-        InputSystem.OnJump += Jumping;
-        InputSystem.StopMove += StopMovement;
-        InputSystem.WalkMove += CharacterMovement;
-    }
-    private void OnDisable()
-    {
-        InputSystem.OnJump -= Jumping;
-        InputSystem.StopMove -= StopMovement;
-        InputSystem.WalkMove -= CharacterMovement;
-    }
-    private void Update()
-    {
-        CharacterAnime();
-        CharacteraRotation();
-        Rayer();
-    }
-    private void FixedUpdate()
-    {
-
-    }
-    public float rayLength = 1f;
-    public LayerMask layermask;
-    private void Rayer()
-    {
-        if(Physics2D.Raycast((Vector2)transform.position, Vector2.down, rayLength, layermask))
+        private void Awake()
         {
-            InAir = false;
-            moreJump = AddJump;
+            rigid = GetComponent<Rigidbody2D>();
+            anime = GetComponent<Animator>();
         }
-        else
+        private void Start()
         {
-            InAir = true;
+            characterSpeed = 0.5f;
+            maxSpeed = 2f;
         }
-        Debug.DrawLine((Vector2)transform.position, new Vector2(transform.position.x,transform.position.y - rayLength), Color.red);
-
-    }
-    private void StopMovement()
-    {
-        rigid.velocity = new Vector2(0f, rigid.velocity.y);
-    }
-
-    private void Jumping()
-    {
-        if(moreJump > 0)
+        private void OnEnable()
         {
-            rigid.velocity = new Vector2(rigid.velocity.x, 0f);
-            rigid.AddForce(Vector2.up * JumpingPower, ForceMode2D.Impulse);
-            moreJump -= 1;
         }
-        //if (InAir & InputSystem.Instance.Move.magnitude > 0)
-        //{
-        //    anime.Play("Walking", 0, 0.5f);
-        //}
-    }
-
-    private void CharacterMovement()
-    {
-        rigid.AddForce(InputSystem.Instance.Move * characterSpeed, ForceMode2D.Impulse);
-    }
-    private void CharacteraRotation()
-    {
-        if(InputSystem.Instance.Move.x < 0f)
+        private void OnDisable()
         {
-            transform.rotation = Quaternion.Euler(0, -180f, 0);
         }
-        else if(InputSystem.Instance.Move.x > 0f)
+        private void Update()
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            CharacterAnime();
+            //CharacteraRotation();
+            //CharacterSpeed();
+        }
+        private void FixedUpdate()
+        {
+            CharacterMovement();
+        }
+        private void CharacterMovement()
+        {
+            transVec = InputSystem.Instance.Move / 10;
+            if(characterSpeed >= maxSpeed)
+            {
+                transform.Translate(transVec * maxSpeed, Space.Self);
+            }
+            else if(characterSpeed <= 0f)
+            {
+                characterSpeed = maxSpeed;
+            }
+            else
+            {
+                transform.Translate(transVec * characterSpeed, Space.Self);
+            }
+        }
+        [SerializeField] private Vector2 transVec;
+        [SerializeField] private float characterSpeed = 1f;
+        public float AddSpeed = 0.1f;
+        private float maxSpeed = 5f;
+        private void CharacterSpeed()                       // 캐릭터 스피드 부여
+        {
+            if(Input.GetKeyDown(KeyCode.Alpha9))
+            {
+                characterSpeed += AddSpeed;
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                characterSpeed -= AddSpeed;
+            }
+        }
+
+        private void CharacteraRotation()                   // 캐릭터 회전
+        {
+            //if (InputSystem.Instance.Move.x < 0f)
+            //{
+            //    transform.rotation = Quaternion.Euler(0, -180f, 0);
+            //}
+            //else if (InputSystem.Instance.Move.x > 0f)
+            //{
+            //    transform.rotation = Quaternion.Euler(0, 0, 0);
+            //}
+        }
+        private void CharacterAnime()
+        {
+            anime.SetFloat("Magnitude", InputSystem.Instance.Move.magnitude);
+            if(characterSpeed < maxSpeed)
+            {
+                anime.SetFloat("SpeedMotion", characterSpeed);
+            }
+            else
+            {
+                anime.SetFloat("SpeedMotion", maxSpeed);
+            }
         }
     }
-    private void CharacterAnime()
-    {
-        anime.SetFloat("Magnitude", InputSystem.Instance.Move.magnitude);
-        anime.SetBool("InAir", InAir);
-        
-    }
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if(collision.gameObject.CompareTag("Ground"))
-    //    {
-                        
-    //    }
-    //}
-    //private void OnCollisionExis2D(Collision2D collision)
-    //{
-    //    if(collision.gameObject.CompareTag("Ground"))
-    //    {
-            
-    //    }
-    //}
 
 }
