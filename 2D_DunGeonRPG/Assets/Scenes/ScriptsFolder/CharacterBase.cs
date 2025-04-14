@@ -9,7 +9,7 @@ public class CharacterBase : MonoBehaviour
     private Rigidbody2D rigid;
     private bool OnGround;
     private int moreJump;
-    private bool OnAir;
+    private bool InAir;
 
     public int AddJump;
     public float characterSpeed;
@@ -49,20 +49,19 @@ public class CharacterBase : MonoBehaviour
     {
 
     }
-    //public float rayLength = 1f;
+    public float rayLength = 1f;
+    public LayerMask layermask;
     private void Rayer()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.8f);
-        
-        if (hit.collider != null)
+        if(Physics2D.Raycast((Vector2)transform.position, Vector2.down, rayLength, layermask))
         {
-            OnAir = false;
-            Debug.DrawRay((Vector2)transform.position, Vector2.down * 0.8f, Color.red);
+            InAir = false;
         }
         else
         {
-            OnAir = true;
+            InAir = true;
         }
+        Debug.DrawLine((Vector2)transform.position, new Vector2(transform.position.x,transform.position.y - rayLength), Color.red);
 
     }
     private void StopMovement()
@@ -98,7 +97,7 @@ public class CharacterBase : MonoBehaviour
     private void CharacterAnime()
     {
         anime.SetFloat("Magnitude", InputSystem.Instance.Move.magnitude);
-        anime.SetBool("Air", OnAir);
+        anime.SetBool("Air", InAir);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

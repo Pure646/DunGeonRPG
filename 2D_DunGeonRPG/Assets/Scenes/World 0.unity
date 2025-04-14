@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 70034336}
   - component: {fileID: 70034338}
   - component: {fileID: 70034337}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Middle
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -673,6 +673,10 @@ MonoBehaviour:
   AddJump: 0
   characterSpeed: 0
   JumpingPower: 0
+  rayLength: 0.6
+  layermask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &222134026
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,7 +688,7 @@ GameObject:
   - component: {fileID: 222134027}
   - component: {fileID: 222134029}
   - component: {fileID: 222134028}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -855,7 +859,7 @@ GameObject:
   - component: {fileID: 390891203}
   - component: {fileID: 390891205}
   - component: {fileID: 390891204}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Middle (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -985,7 +989,7 @@ GameObject:
   - component: {fileID: 492470207}
   - component: {fileID: 492470209}
   - component: {fileID: 492470208}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Middle (4)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1207,7 +1211,7 @@ GameObject:
   - component: {fileID: 579575388}
   - component: {fileID: 579575390}
   - component: {fileID: 579575389}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Middle (6)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1524,7 +1528,7 @@ GameObject:
   - component: {fileID: 1172958898}
   - component: {fileID: 1172958900}
   - component: {fileID: 1172958899}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Middle (7)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1654,7 +1658,7 @@ GameObject:
   - component: {fileID: 1513942081}
   - component: {fileID: 1513942083}
   - component: {fileID: 1513942082}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Middle (5)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1868,7 +1872,7 @@ GameObject:
   - component: {fileID: 1662300195}
   - component: {fileID: 1662300197}
   - component: {fileID: 1662300196}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Middle (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1998,7 +2002,7 @@ GameObject:
   - component: {fileID: 1774955319}
   - component: {fileID: 1774955321}
   - component: {fileID: 1774955320}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Middle (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2159,7 +2163,7 @@ GameObject:
   - component: {fileID: 2015114655}
   - component: {fileID: 2015114657}
   - component: {fileID: 2015114656}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right
   m_TagString: Ground
   m_Icon: {fileID: 0}
