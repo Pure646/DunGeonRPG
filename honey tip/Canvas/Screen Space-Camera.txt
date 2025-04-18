@@ -1,0 +1,38 @@
+1. Plane Distance
+
+UI(Canvas)가 카메라에서 얼마나 떨어져서 렌더링될지를 설정
+
+
+2. "Canvas Scaler"의 Resize 옵션 (UI 크기 조정 관련)
+
+UI Scale Mode에서 고를 수 있는 건 보통:
+
+Constant Pixel Size: 해상도 상관없이 픽셀 그대로 UI가 보여짐
+Scale With Screen Size: 해상도에 따라 UI 자동으로 크기 조절됨 → 보통 이걸 사용해
+Constant Physical Size: 디바이스 DPI에 따라 크기 맞춤 (드물게 사용)
+
+
+3. Sorting Layer & Order in Layer
+
+UI 요소나 Sprite가 어떤 순서로 렌더링될지를 설정
+
+Sorting Layer: 계층(레이어) 자체를 선택
+예: "Default", "UI", "Background", "Foreground" 등
+
+Order in Layer: 그 레이어 안에서의 렌더 순서
+숫자가 클수록 더 앞에 그려짐
+
+
+4. Additional Shader Channels
+
+이건 좀 고급 설정인데, UI 오브젝트가 추가적인 데이터를 Shader에 넘길 수 있게 하는 설정
+
+예: UI에 커스텀 쉐이더를 쓸 때,
+
+Tangent				: 법선 맵 등에서 필요
+Normal				: 광원 계산
+TexCoord1, TexCoord2		: 추가 UV 정보
+Color					: 색상 정보
+
+기본적으로는 건드릴 필요 없다.
+하지만 UI를 이용한 특수 효과 (예: 휘어지는 UI, 그라디언트 쉐이더 등)를 만들 때 필요해.

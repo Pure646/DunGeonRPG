@@ -10,6 +10,10 @@ namespace DunGeonRPG
         private Animator anime;
         private Rigidbody2D rigid;
 
+        [SerializeField] private Vector2 transVec;
+        [SerializeField] private float characterSpeed = 1f;
+        public float AddSpeed = 0.1f;
+        private float maxSpeed = 5f;
 
         private void Awake()
         {
@@ -19,7 +23,7 @@ namespace DunGeonRPG
         private void Start()
         {
             characterSpeed = 0.5f;
-            maxSpeed = 2f;
+            maxSpeed = 200f;
         }
         private void OnEnable()
         {
@@ -30,8 +34,8 @@ namespace DunGeonRPG
         private void Update()
         {
             CharacterAnime();
-            //CharacteraRotation();
-            //CharacterSpeed();
+            characterSpeed = characterSpeed + (Time.time * Time.deltaTime);
+            
         }
         private void FixedUpdate()
         {
@@ -53,10 +57,7 @@ namespace DunGeonRPG
                 transform.Translate(transVec * characterSpeed, Space.Self);
             }
         }
-        [SerializeField] private Vector2 transVec;
-        [SerializeField] private float characterSpeed = 1f;
-        public float AddSpeed = 0.1f;
-        private float maxSpeed = 5f;
+        
         private void CharacterSpeed()                       // 캐릭터 스피드 부여
         {
             if(Input.GetKeyDown(KeyCode.Alpha9))
