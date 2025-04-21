@@ -1,0 +1,8 @@
+GameObject Character_Tag;
+
+if(Character_Tag.CompareTag("Character"))
+{
+	// Character_Tag의 태그가 "Character"일 때 실행됨
+}
+
+Tag (" ") 가 맞는지 비교하는 코드

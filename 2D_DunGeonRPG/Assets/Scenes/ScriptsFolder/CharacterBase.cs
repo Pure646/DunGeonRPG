@@ -15,6 +15,9 @@ namespace DunGeonRPG
         public float AddSpeed = 0.1f;
         private float maxSpeed = 5f;
 
+        [Range(0, 100f)]
+        public float CurrentHealth = 100f;
+
         private void Awake()
         {
             rigid = GetComponent<Rigidbody2D>();
@@ -24,12 +27,6 @@ namespace DunGeonRPG
         {
             characterSpeed = 0.5f;
             maxSpeed = 200f;
-        }
-        private void OnEnable()
-        {
-        }
-        private void OnDisable()
-        {
         }
         private void Update()
         {
@@ -41,7 +38,7 @@ namespace DunGeonRPG
         {
             CharacterMovement();
         }
-        private void CharacterMovement()
+        private void CharacterMovement()            // Rigid.addForce 로 바꿀 예정
         {
             transVec = InputSystem.Instance.Move / 10;
             if(characterSpeed >= maxSpeed)
@@ -70,17 +67,6 @@ namespace DunGeonRPG
             }
         }
 
-        private void CharacteraRotation()                   // 캐릭터 회전
-        {
-            //if (InputSystem.Instance.Move.x < 0f)
-            //{
-            //    transform.rotation = Quaternion.Euler(0, -180f, 0);
-            //}
-            //else if (InputSystem.Instance.Move.x > 0f)
-            //{
-            //    transform.rotation = Quaternion.Euler(0, 0, 0);
-            //}
-        }
         private void CharacterAnime()
         {
             anime.SetFloat("Magnitude", InputSystem.Instance.Move.magnitude);

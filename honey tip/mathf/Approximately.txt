@@ -1,0 +1,4 @@
+Mathf.Approximately(float a,float b);
+
+a 랑 b 를 서로 비교해보고 같으면 true
+아니면 flase
