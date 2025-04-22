@@ -15,8 +15,7 @@ namespace DunGeonRPG
         public float AddSpeed = 0.1f;
         private float maxSpeed = 5f;
 
-        [Range(0, 100f)]
-        public float CurrentHealth = 100f;
+        public float CurrentHealth;
 
         private void Awake()
         {
@@ -31,8 +30,10 @@ namespace DunGeonRPG
         private void Update()
         {
             CharacterAnime();
-            characterSpeed = characterSpeed + (Time.time * Time.deltaTime);
-            
+            if(Input.GetKeyDown(KeyCode.L))
+            {
+                Attack();
+            }
         }
         private void FixedUpdate()
         {
@@ -78,6 +79,10 @@ namespace DunGeonRPG
             {
                 anime.SetFloat("SpeedMotion", maxSpeed);
             }
+        }
+
+        private void Attack()
+        {
         }
     }
 
