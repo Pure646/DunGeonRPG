@@ -15,8 +15,13 @@ namespace DunGeonRPG
         public float AddSpeed = 0.1f;
         private float maxSpeed = 5f;
 
+        [Header("Character Health && Mana")]
+        public int AddHealth;               // 추가 체력       // 초기값 : 0 (하트 한개)
+        public int AddMana;                 // 추가 마나       // 초기값 : 0 (하트 한개)
+        public int NowHealth;               // 추가된 체력
+        public int NowMana;                 // 추가된 마나
         public float CurrentHealth;
-
+        public float CurrentMana;
         private void Awake()
         {
             rigid = GetComponent<Rigidbody2D>();
@@ -24,6 +29,11 @@ namespace DunGeonRPG
         }
         private void Start()
         {
+            AddHealth = 1;          // 추가 체력    (기본값 : 1)
+            AddMana = 1;            // 추락 마나    (기본값 : 1)
+            NowHealth = AddHealth;
+            NowMana = AddMana;
+
             characterSpeed = 0.5f;
             maxSpeed = 200f;
         }
@@ -32,7 +42,7 @@ namespace DunGeonRPG
             CharacterAnime();
             if(Input.GetKeyDown(KeyCode.L))
             {
-                Attack();
+
             }
         }
         private void FixedUpdate()
@@ -81,9 +91,12 @@ namespace DunGeonRPG
             }
         }
 
-        private void Attack()
-        {
-        }
+        //private void GameOver()
+        //{
+        //    if(CurrentHealth <= 0)
+        //    {
+        //        Debug.Log("gameOver");
+        //    }
+        //}
     }
-
 }
