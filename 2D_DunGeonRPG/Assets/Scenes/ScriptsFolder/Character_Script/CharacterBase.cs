@@ -15,13 +15,19 @@ namespace DunGeonRPG
         public float AddSpeed = 0.1f;
         private float maxSpeed = 5f;
 
+        [Header("Character Hit or Damage")]
+        [SerializeField] float Damage = 0.25f;
+
         [Header("Character Health && Mana")]
+        [Range(0, 100)]
         public int AddHealth;               // 추가 체력       // 초기값 : 0 (하트 한개)
         public int AddMana;                 // 추가 마나       // 초기값 : 0 (하트 한개)
         public int NowHealth;               // 추가된 체력
         public int NowMana;                 // 추가된 마나
-        public float CurrentHealth;
-        public float CurrentMana;
+        public float ChangeCurrentHealth;       // 체력 변동
+        public float ChangeCurrentMana;         // 마나 변동
+        public float NowCurrentHealth;          // 현재 가지고 있는 체력
+        public float NowCurrentMana;            // 현재 가지고 있는 마나
         private void Awake()
         {
             rigid = GetComponent<Rigidbody2D>();
@@ -31,8 +37,8 @@ namespace DunGeonRPG
         {
             AddHealth = 1;          // 추가 체력    (기본값 : 1)
             AddMana = 1;            // 추락 마나    (기본값 : 1)
-            NowHealth = AddHealth;
-            NowMana = AddMana;
+            NowCurrentHealth = AddHealth;
+            NowCurrentMana = AddMana;
 
             characterSpeed = 0.5f;
             maxSpeed = 200f;
@@ -40,9 +46,14 @@ namespace DunGeonRPG
         private void Update()
         {
             CharacterAnime();
-            if(Input.GetKeyDown(KeyCode.L))
+            
+            if(Input.GetKeyDown(KeyCode.Space))
             {
-
+                Character_Damage();
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha9))
+            {
+                Character_AddHealth();
             }
         }
         private void FixedUpdate()
@@ -65,7 +76,19 @@ namespace DunGeonRPG
                 transform.Translate(transVec * characterSpeed, Space.Self);
             }
         }
-        
+        private void Character_Damage()
+        {
+            NowCurrentHealth -= Damage;
+        }
+        private void Character_AddHealth()
+        {
+            if(AddHealth > NowCurrentHealth)
+            {
+                NowCurrentHealth = AddHealth;       // 최대체력 보다 높게 체력 설정 불가능
+            }
+            AddHealth = AddHealth + 1;
+            NowCurrentHealth = AddHealth;
+        }
         private void CharacterSpeed()                       // 캐릭터 스피드 부여
         {
             if(Input.GetKeyDown(KeyCode.Alpha9))
