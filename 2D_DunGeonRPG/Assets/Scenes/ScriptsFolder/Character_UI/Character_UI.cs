@@ -16,10 +16,10 @@ public class Character_UI : MonoBehaviour
     private List<GameObject> ManaPoint = new List<GameObject>();
     private List<RectTransform> Rect_HP = new List<RectTransform>();
     private List<RectTransform> Rect_MP = new List<RectTransform>();
-    private List<Image> Health_Img = new List<Image>();
-    private List<Image> HealthLost_Img = new List<Image>();
-    private List<Image> Mana_Img = new List<Image>();
-    private List<Image> ManaLost_Img = new List<Image>();
+    private List<Image> Health_Image = new List<Image>();
+    private List<Image> Mana_Image = new List<Image>();
+    private List<Image> LostHealth_Image = new List<Image>();
+    private List<Image> LostMana_Image = new List<Image>();
 
     private void Awake()
     {
@@ -37,14 +37,46 @@ public class Character_UI : MonoBehaviour
     {
         HealthPointClone();
         ManaPointClone();
+        CurrentHealth_Image();
+        CurrentMana_Image();
+        Reset_HpMp();
     }
-    private void Current_Health()
+    private void Reset_HpMp()
     {
-        if (HealthPoint.Count >= 0 && characterBase.NowCurrentHealth != characterBase.ChangeCurrentHealth) 
+        if(characterBase.NowHealth < characterBase.NowCurrentHealth)
         {
-            for(int i = 0; i < HealthPoint.Count; i++)
+            characterBase.NowCurrentHealth = characterBase.AddHealth;           //오버 금지
+        }
+    }
+    private void CurrentHealth_Image()
+    {
+        if(characterBase.NowCurrentHealth != characterBase.ChangeCurrentHealth)
+        {
+            for (int i = 0; i < Health_Image.Count; i++)
             {
-                //if (HealthPoint[i])
+                float FillHealth = Mathf.Clamp01(characterBase.NowCurrentHealth - i);
+                Health_Image[i].fillAmount = FillHealth;
+                LostHealth_Image[i].fillAmount = 1 - FillHealth;
+            }
+            if(Health_Image.Count > 0)
+            {
+                characterBase.ChangeCurrentHealth = characterBase.NowCurrentHealth;
+            }
+        }
+    }
+    private void CurrentMana_Image()
+    {
+        if(characterBase.NowCurrentMana != characterBase.ChangeCurrentMana)
+        {
+            for(int i = 0; i < Mana_Image.Count; i++)
+            {
+                float FillMana = Mathf.Clamp01(characterBase.NowCurrentMana - i);
+                Mana_Image[i].fillAmount = FillMana;
+                LostMana_Image[i].fillAmount = 1 - FillMana;
+            }
+            if(Mana_Image.Count > 0)
+            {
+                characterBase.ChangeCurrentMana = characterBase.NowCurrentMana;
             }
         }
     }
@@ -65,10 +97,13 @@ public class Character_UI : MonoBehaviour
                         Rect_HP[i].anchoredPosition = new Vector2(40 * i, 0);
                         Rect_HP[i].localScale = new Vector2(1, 1);
 
-                        Image Hp_img = HealthPoint[i].transform.Find("Hp_Bar").GetComponent<Image>();
-                        Health_Img.Add(Hp_img);
-                        Image HpLost_img = HealthPoint[i].transform.Find("Hp_BarLost").GetComponent<Image>();
-                        HealthLost_Img.Add(HpLost_img);
+                        Image HealthChild = HealthPoint[i].transform.Find("Hp_Bar").GetComponent<Image>();
+                        Health_Image.Add(HealthChild);
+                        Image LostHealthChild = HealthPoint[i].transform.Find("Hp_BarLost").GetComponent<Image>();
+                        LostHealth_Image.Add(LostHealthChild);
+
+                        Health_Image[i].fillAmount = 0;
+                        LostHealth_Image[i].fillAmount = 1;
                     }
                 }
                 characterBase.NowHealth = characterBase.AddHealth;
@@ -82,17 +117,17 @@ public class Character_UI : MonoBehaviour
                         Destroy(HealthPoint[i]);
                         HealthPoint.RemoveAt(i);
                     }
-                    if (i < Rect_HP.Count) 
+                    if (i < Rect_HP.Count)
                     {
                         Rect_HP.RemoveAt(i);
                     }
-                    if (i < Health_Img.Count) 
+                    if (i < Health_Image.Count)
                     {
-                        Health_Img.RemoveAt(i);
+                        Health_Image.RemoveAt(i);
                     }
-                    if (i < HealthLost_Img.Count) 
+                    if (i < LostHealth_Image.Count)
                     {
-                        HealthLost_Img.RemoveAt(i);
+                        LostHealth_Image.RemoveAt(i);
                     }
                 }
                 characterBase.NowHealth = characterBase.AddHealth;
@@ -106,8 +141,8 @@ public class Character_UI : MonoBehaviour
             }
             HealthPoint.Clear();
             Rect_HP.Clear();
-            Health_Img.Clear();
-            HealthLost_Img.Clear();
+            Health_Image.Clear();
+            LostHealth_Image.Clear();
             characterBase.NowHealth = characterBase.AddHealth;
         }
     }
@@ -128,10 +163,13 @@ public class Character_UI : MonoBehaviour
                         Rect_MP[i].anchoredPosition = new Vector2(35 * i, 0);
                         Rect_MP[i].localScale = new Vector2(1, 1);
 
-                        Image Mp_img = ManaPoint[i].transform.Find("Mp_Bar").GetComponent<Image>();
-                        Mana_Img.Add(Mp_img);
-                        Image MpLost_img = ManaPoint[i].transform.Find("Mp_BarLost").GetComponent<Image>();
-                        ManaLost_Img.Add(MpLost_img);
+                        Image ManaChild = ManaPoint[i].transform.Find("Mp_Bar").GetComponent<Image>();
+                        Mana_Image.Add(ManaChild);
+                        Image LostManaChild = ManaPoint[i].transform.Find("Mp_BarLost").GetComponent<Image>();
+                        LostMana_Image.Add(LostManaChild);
+
+                        Mana_Image[i].fillAmount = 0;
+                        LostMana_Image[i].fillAmount = 1;
                     }
                 }
                 characterBase.NowMana = characterBase.AddMana;
@@ -149,13 +187,13 @@ public class Character_UI : MonoBehaviour
                     {
                         Rect_MP.RemoveAt(i);
                     }
-                    if (i < Mana_Img.Count) 
+                    if (i < Mana_Image.Count) 
                     {
-                        Mana_Img.RemoveAt(i);
+                        Mana_Image.RemoveAt(i);
                     }
-                    if (i < ManaLost_Img.Count) 
+                    if (i < LostMana_Image.Count) 
                     {
-                        ManaLost_Img.RemoveAt(i);
+                        LostMana_Image.RemoveAt(i);
                     }
                 }
                 characterBase.NowMana = characterBase.AddMana;
@@ -169,8 +207,8 @@ public class Character_UI : MonoBehaviour
             }
             ManaPoint.Clear();
             Rect_MP.Clear();
-            Mana_Img.Clear();
-            ManaLost_Img.Clear();
+            Mana_Image.Clear();
+            LostMana_Image.Clear();
             characterBase.NowMana = characterBase.AddMana;
         }
     }

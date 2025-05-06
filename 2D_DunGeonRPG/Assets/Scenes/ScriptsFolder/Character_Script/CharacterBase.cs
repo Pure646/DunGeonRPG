@@ -22,10 +22,10 @@ namespace DunGeonRPG
         [Range(0, 100)]
         public int AddHealth;               // 추가 체력       // 초기값 : 0 (하트 한개)
         public int AddMana;                 // 추가 마나       // 초기값 : 0 (하트 한개)
-        public int NowHealth;               // 추가된 체력
-        public int NowMana;                 // 추가된 마나
-        public float ChangeCurrentHealth;       // 체력 변동
-        public float ChangeCurrentMana;         // 마나 변동
+        public int NowHealth;               // 추가된 체력           // 변경 불가능
+        public int NowMana;                 // 추가된 마나           // 변경 불가능
+        public float ChangeCurrentHealth;       // 체력 변동         // 변경 불가능
+        public float ChangeCurrentMana;         // 마나 변동         // 변경 불가능
         public float NowCurrentHealth;          // 현재 가지고 있는 체력
         public float NowCurrentMana;            // 현재 가지고 있는 마나
         private void Awake()
