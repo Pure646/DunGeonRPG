@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Character_UI : MonoBehaviour
 {
+    public static Character_UI Instance { get; private set; }
+
     private GameObject character;
     private CharacterBase characterBase;
 
@@ -23,15 +25,17 @@ public class Character_UI : MonoBehaviour
 
     private void Awake()
     {
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
         character = GameObject.FindGameObjectWithTag("Character");
         if(character != null)
         {
             characterBase = character.GetComponent<CharacterBase>();
         }
-    }
-    private void Start()
-    {
-
     }
     private void Update()
     {
