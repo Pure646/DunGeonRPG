@@ -12,4 +12,5 @@ public class Enemy_Base : ScriptableObject
     public float Speed;             // 이동속도
 
     public string Information;       // 정보
+    public float Enemy_Health;      // 유닛 체력(일단 실험용)
 }

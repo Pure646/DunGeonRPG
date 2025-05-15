@@ -7,22 +7,42 @@ public class Enemy : MonoBehaviour
 {
     private enum EnemyName
     {
-        None,
+        None = 0,
+        MiniSlime = 1,
+        Goblin = 2,
     }
 
-    [SerializeField] private Enemy_Base EnemyBase;
-    private void Update()
+    [SerializeField] private int EnemyNumber;
+    [SerializeField] private GameObject MiniSlime;
+    [SerializeField] private Enemy_Base MiniSlimeInfo;
+
+    private List<GameObject> enemyGameObject;
+    private List<Enemy_Base> enemyInfo;
+    private void Awake()
     {
+    }
+    private void Start()
+    {
+        enemyGameObject = new List<GameObject>();
+        enemyInfo = new List<Enemy_Base>();
+
+        enemyGameObject.Add(Instantiate(MiniSlime));
+        enemyGameObject[0].transform.SetParent(gameObject.transform);
+        enemyInfo.Add(MiniSlimeInfo);
         
     }
-    private void Dragon()
+    private void Update()
     {
-        if (EnemyBase != null)
+        if(Input.GetKeyDown(KeyCode.U))
         {
-            if(EnemyBase.Enemy_Name == "Dragon")
-            {
-
-            }
+            Monster();
+        }
+    }
+    private void Monster()
+    {
+        if (enemyInfo[0].Enemy_Name == enemyGameObject[0].tag)
+        {
+            Debug.Log($"이름 : {enemyInfo[0].Enemy_Name} , 설명 : {enemyInfo[0].Information}");
         }
     }
 }
