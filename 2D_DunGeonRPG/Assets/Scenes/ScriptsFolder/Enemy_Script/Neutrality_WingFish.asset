@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4516b9e6413034546928163d0220ce92, type: 3}
-  m_Name: Slime
+  m_Name: Neutrality_WingFish
   m_EditorClassIdentifier: 
-  Enemy_Name: MiniSlime
-  Enemy_Type: "\uBB3C"
-  AttackDamge: 1
-  Armor: 0
-  Speed: 0.5
-  Information: "\uC218\uBD84 99% , \uC554\uD751 \uBB3C\uC9C8 1% \uB85C \uC774\uB8E8\uC5B4\uC9C4
-    \uC0DD\uBA85\uCCB4. \uC5B4\uB5BB\uAC8C \uC6C0\uC9C1\uC774\uB294\uC9C0 \uC544\uC9C1
-    \uBC1D\uD600\uC9C0\uC9C0 \uC54A\uC558\uB2E4."
+  Enemy_Name: WingFish
+  Enemy_HealthPoint: 10
+  Enemy_SpeedPoint: 3.5
+  Enemy_AttackPoint: 1
+  Enemy_AttackSpeed: 3
+  Enemy_AttackType: Normal
+  Enemy_Infomation: "[\uC911\uB9BD] \uD558\uB298\uC744 \uB0A0\uC544\uB2E4\uB2C8\uB294
+    \uBB3C\uACE0\uAE30"

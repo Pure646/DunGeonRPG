@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4516b9e6413034546928163d0220ce92, type: 3}
+  m_Name: Monster_FireDragon
+  m_EditorClassIdentifier: 
+  Enemy_Name: FireDragon
+  Enemy_HealthPoint: 45000
+  Enemy_SpeedPoint: 8
+  Enemy_AttackPoint: 100
+  Enemy_AttackSpeed: 10
+  Enemy_AttackType: "\uD654\uC5FC"
+  Enemy_Infomation: "[\uBAAC\uC2A4\uD130] \uD654\uC5FC \uB4DC\uB798\uACE4"

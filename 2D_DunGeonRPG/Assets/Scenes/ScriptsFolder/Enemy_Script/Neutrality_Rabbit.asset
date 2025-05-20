@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4516b9e6413034546928163d0220ce92, type: 3}
+  m_Name: Neutrality_Rabbit
+  m_EditorClassIdentifier: 
+  Enemy_Name: Rabbit
+  Enemy_HealthPoint: 3
+  Enemy_SpeedPoint: 3
+  Enemy_AttackPoint: 0.5
+  Enemy_AttackSpeed: 3
+  Enemy_AttackType: Normal
+  Enemy_Infomation: "[\uC911\uB9BD] \uADC0\uC5EC\uC6B4 \uD1A0\uB07C\uC77C\uAE4C?"

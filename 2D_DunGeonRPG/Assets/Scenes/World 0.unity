@@ -360,6 +360,7 @@ GameObject:
   - component: {fileID: 495296330}
   - component: {fileID: 495296329}
   - component: {fileID: 495296328}
+  - component: {fileID: 495296333}
   m_Layer: 5
   m_Name: Monster_Canvas
   m_TagString: Untagged
@@ -379,9 +380,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 498512595a507e440944f20bfbe6022f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyNumber: 0
-  MiniSlime: {fileID: 5011872609111943521, guid: aabf4bc9f4371be439b15349fef71115, type: 3}
-  MiniSlimeInfo: {fileID: 11400000, guid: 483a8ed85a0dec641ba68e51aa471e4d, type: 2}
+  Enemyes_Info:
+  - {fileID: 11400000, guid: 483a8ed85a0dec641ba68e51aa471e4d, type: 2}
+  - {fileID: 11400000, guid: eaa51a726f6f6f44aad48579fdce1377, type: 2}
+  - {fileID: 11400000, guid: f318975a41e4b444caf4bdca93f29c02, type: 2}
+  - {fileID: 11400000, guid: 32157597ab78983419c3eaab52c3e604, type: 2}
+  - {fileID: 11400000, guid: 0898aa85f8809ac45a2fe9595f0c7fa6, type: 2}
 --- !u!114 &495296329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,6 +468,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &495296333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495296327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 614923f2f75d4e54abca423cd05886f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,46 +3,51 @@ using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 
+public class Enemyes
+{
+    public string Enemy_Name;                   // 적 이름
+    public float Enemy_HealthPoint;             // 적 체력
+    public float Enemy_SpeedPoint;              // 적 이동속도
+
+    public float Enemy_AttackPoint;             // 공격력
+    public float Enemy_AttackSpeed;             // 공격 연사속도
+    public string Enemy_AttackType;             // 공격 속성    (아직 미구현)
+
+    public string Enemy_Infomation;
+
+}
 public class Enemy : MonoBehaviour
 {
-    private enum EnemyName
-    {
-        None = 0,
-        MiniSlime = 1,
-        Goblin = 2,
-    }
+    public static Enemy Instance { get; private set; }
+    public Enemy_Base[] Enemyes_Info;
+    private Enemyes[] Enemyes_Set;
 
-    [SerializeField] private int EnemyNumber;
-    [SerializeField] private GameObject MiniSlime;
-    [SerializeField] private Enemy_Base MiniSlimeInfo;
-
-    private List<GameObject> enemyGameObject;
-    private List<Enemy_Base> enemyInfo;
-    private void Awake()
+    public void Awake()
     {
-    }
-    private void Start()
-    {
-        enemyGameObject = new List<GameObject>();
-        enemyInfo = new List<Enemy_Base>();
-
-        enemyGameObject.Add(Instantiate(MiniSlime));
-        enemyGameObject[0].transform.SetParent(gameObject.transform);
-        enemyInfo.Add(MiniSlimeInfo);
-        
-    }
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.U))
+        if(Instance == null)
         {
-            Monster();
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
-    private void Monster()
+    public void Start()
     {
-        if (enemyInfo[0].Enemy_Name == enemyGameObject[0].tag)
+        Enemyes_Set = new Enemyes[Enemyes_Info.Length];
+
+        Enemy_Information();
+    }
+    private void Enemy_Information()            // 몬스터 정보 초기화
+    {
+        for (int i = 0; i < Enemyes_Info.Length; i++)
         {
-            Debug.Log($"이름 : {enemyInfo[0].Enemy_Name} , 설명 : {enemyInfo[0].Information}");
+            Enemyes_Set[i] = new Enemyes();
+            Enemyes_Set[i].Enemy_Name = Enemyes_Info[i].Enemy_Name;
+            Enemyes_Set[i].Enemy_HealthPoint = Enemyes_Info[i].Enemy_HealthPoint;
+            Enemyes_Set[i].Enemy_SpeedPoint = Enemyes_Info[i].Enemy_SpeedPoint;
+            Enemyes_Set[i].Enemy_AttackPoint = Enemyes_Info[i].Enemy_AttackPoint;
+            Enemyes_Set[i].Enemy_AttackSpeed = Enemyes_Info[i].Enemy_AttackSpeed;
+            Enemyes_Set[i].Enemy_AttackType = Enemyes_Info[i].Enemy_AttackType;
+            Enemyes_Set[i].Enemy_Infomation = Enemyes_Info[i].Enemy_Infomation;
         }
     }
 }

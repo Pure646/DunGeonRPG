@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4516b9e6413034546928163d0220ce92, type: 3}
-  m_Name: Dragon
+  m_Name: Monster_Skeleton
   m_EditorClassIdentifier: 
-  Enemy_Name: Dragon
-  Enemy_Type: Fire
-  AttackDamge: 5.5
-  Armor: 5
-  Speed: 3
-  Information: 
+  Enemy_Name: Skeleton
+  Enemy_HealthPoint: 15
+  Enemy_SpeedPoint: 2
+  Enemy_AttackPoint: 2
+  Enemy_AttackSpeed: 2
+  Enemy_AttackType: Normal
+  Enemy_Infomation: "[\uBAAC\uC2A4\uD130] \uBF08\uB9CC \uC788\uB294 \uD574\uACE8\uC774
+    \uC6C0\uC9C1\uC778\uB2E4."
