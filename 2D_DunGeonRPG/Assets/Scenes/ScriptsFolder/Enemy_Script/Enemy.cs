@@ -15,11 +15,19 @@ public class Enemyes
 
     public string Enemy_Infomation;
 
+    //public void Checking(string name, string info)
+    //{
+    //    Debug.Log($"이름 : {name} , 정보 : {info}");
+    //}
+    //public void ToolChecking()
+    //{
+    //    Debug.Log($"이름 : {Enemy_Name} , 정보 : {Enemy_Infomation}");
+    //}
 }
 public class Enemy : MonoBehaviour
 {
     public static Enemy Instance { get; private set; }
-    public Enemy_Base[] Enemyes_Info;
+    public Enemy_Base[] Enemy_Info;
     private Enemyes[] Enemyes_Set;
 
     public void Awake()
@@ -29,25 +37,28 @@ public class Enemy : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+        Enemyes_Set = new Enemyes[Enemy_Info.Length];
     }
     public void Start()
     {
-        Enemyes_Set = new Enemyes[Enemyes_Info.Length];
-
-        Enemy_Information();
-    }
-    private void Enemy_Information()            // 몬스터 정보 초기화
-    {
-        for (int i = 0; i < Enemyes_Info.Length; i++)
+        if (Enemy_Info != null)
         {
-            Enemyes_Set[i] = new Enemyes();
-            Enemyes_Set[i].Enemy_Name = Enemyes_Info[i].Enemy_Name;
-            Enemyes_Set[i].Enemy_HealthPoint = Enemyes_Info[i].Enemy_HealthPoint;
-            Enemyes_Set[i].Enemy_SpeedPoint = Enemyes_Info[i].Enemy_SpeedPoint;
-            Enemyes_Set[i].Enemy_AttackPoint = Enemyes_Info[i].Enemy_AttackPoint;
-            Enemyes_Set[i].Enemy_AttackSpeed = Enemyes_Info[i].Enemy_AttackSpeed;
-            Enemyes_Set[i].Enemy_AttackType = Enemyes_Info[i].Enemy_AttackType;
-            Enemyes_Set[i].Enemy_Infomation = Enemyes_Info[i].Enemy_Infomation;
+            for(int i = 0; i < Enemy_Info.Length; i++)
+            {
+                Enemyes_Set[i] = new Enemyes();
+                EnemyInfo(Enemyes_Set[i], Enemy_Info[i]);
+            }
         }
+    }
+    private void EnemyInfo(Enemyes Es, Enemy_Base Eb)
+    {
+        //Es = new Enemyes();           // 매개변수로 객체 참조를 넘길 때, 해당 참조 자체를 바꾸면 호출한 쪽에는 반영되지 않기 때문
+        Es.Enemy_Name         = Eb.Enemy_Name;
+        Es.Enemy_HealthPoint  = Eb.Enemy_HealthPoint;
+        Es.Enemy_SpeedPoint   = Eb.Enemy_SpeedPoint;
+        Es.Enemy_AttackPoint  = Eb.Enemy_AttackPoint;
+        Es.Enemy_AttackSpeed  = Eb.Enemy_AttackSpeed;
+        Es.Enemy_AttackType   = Eb.Enemy_AttackType;
+        Es.Enemy_Infomation   = Eb.Enemy_Infomation;
     }
 }
