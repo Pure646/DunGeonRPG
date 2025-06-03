@@ -1,0 +1,15 @@
+오브젝트나 컴포넌트를 인스펙터에서 숨기거나, 삭제되지 않도록 설정
+자동으로 생성된 오브젝트를 인스펙터에서 숨기고 싶을 때 유용한다.\
+
+HideFlags.None		: 아무것도 숨기지 않음 (기본값)
+HideFlags.HideInHierarchy	: Hierarchy에서 오브젝트 숨기기
+HideFlags.HideInInspector	: Inspector에서 오브젝트 숨기기
+HideFlags.DontSaveInEditor	: 에디터에서 오브젝트가 저장되지 않음
+HideFlags.DontSaveInBuild	: 빌드된 게임에서 오브젝트가 저장되지 않음
+HideFlags.HideAndDontSave	: Hierarchy에서 숨기고, 저장하지도 않음
+
+ex)
+void Start()
+{
+    gameObject.hideFlags = HideFlags.HideInHierarchy;
+}

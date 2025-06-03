@@ -1,0 +1,6 @@
+텍스트를 여러 줄로 표시할 수 있도록 합니다.
+
+ex)
+[Multiline(3)]
+public string description;
+// 3줄 이상의 텍스트를 인스펙터에서 입력할 수 있도록 합니다.

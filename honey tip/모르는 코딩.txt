@@ -1,0 +1,13 @@
+.ToLower()
+.Contains()
+
+//#if UNITY_EDITOR
+//#endif
+
+GetComponentDataArray<>
+
+DebugOverlay
+
+[InternalBufferCapacity()]
+
+[DisableAutoCreation] 

@@ -1,0 +1,7 @@
+인스펙터에서 변수 그룹에 제목을 추가
+편리하게 보여주게 할 수 있다.
+
+ex)
+[Header("Player Settings")]
+public float health;
+public float speed;

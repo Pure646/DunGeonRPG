@@ -1,0 +1,18 @@
+컴포넌트 간 의존성을 자동으로 처리해주는 역할
+
+ex)
+[RequireComponent(typeof(Rigidbody2D))]
+public class PlayerMovement : MonoBehaviour
+{
+    // ...
+}
+
+"이 스크립트(PlayerMovement)가 붙은 GameObject에는 반드시 Rigidbody2D 컴포넌트가 있어야 한다."
+
+사용하는 이유 :
+실수 방지: Rigidbody2D를 꼭 써야 하는 스크립트인데, 실수로 안 붙여놓으면 NullReference 오류 납니다.
+자동 추가: Unity가 자동으로 필요한 컴포넌트를 추가해줍니다.
+코드 안정성 증가: 나중에 이 스크립트를 누가 사용해도 덜 망가집니다.
+
+= RequireComponent 속성은 자동으로 해당 컴포넌트를 GameObject에 없으면 추가해주는 역할을 한다. =
+= 추가된 컴포넌트는 게임이 종료되면 사라진다. =

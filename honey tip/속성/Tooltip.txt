@@ -1,0 +1,7 @@
+변수에 마우스를 올렸을 때 툴팁을 표시해주는 속성
+
+ex)
+public class Player : MonoBehaviour
+{
+    [Tooltip("Player's movement speed")] public float moveSpeed = 5f;
+}

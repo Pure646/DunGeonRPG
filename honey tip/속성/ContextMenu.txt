@@ -1,0 +1,13 @@
+인스펙터의 우클릭 메뉴에 메뉴 항목을 추가할 수 있게 해줍니다. 
+
+Component가 된 Script 에 우클릭을 하면 함수만 실행하게 된다.
+
+ex)
+public class Player : MonoBehaviour
+{
+    [ContextMenu("Reset Health")]
+    public void ResetHealth()
+    {
+        Debug.Log("Health Reset");
+    }
+}

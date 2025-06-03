@@ -1,0 +1,10 @@
+public 필드를 인스펙터에서 숨길 때 사용
+코드에서 접근은 가능하지만, Unity 에디터에서는 보이지 않게 만듭니다.
+
+숨기는 이유는 Inspector 창에 편리성
+
+ex)
+public class Player : MonoBehaviour
+{
+    [HideInInspector] public int score = 0; // 인스펙터에서는 안 보임
+}

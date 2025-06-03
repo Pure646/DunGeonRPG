@@ -1,0 +1,61 @@
+이 속성은 게임을 실행하지 않아도 에디터에서 Update()와 같은 함수가 실행되게 합니다. 
+이 속성은 주로 에디터에서 실시간으로 반응하는 객체를 만들 때 사용됩니다.
+
+ex)
+[ExecuteInEditMode]
+public class MyEditorScript : MonoBehaviour
+{
+    void Update()
+    {
+        transform.Rotate(Vector3.up * 10f * Time.deltaTime); // 게임 실행 없이 회전
+    }
+}
+
+1. Awake(), Start() 만 제외하면 전부 실행이 된다.
+
+2. 작동되지 않는 것들 :
+- 입력처리 (Input.GetKeyDown, Input.GetMouseButtonDown 등) : 게임이 실행되지 않으면 입력을 받을 수 없습니다.
+- Time 관련 (Time.deltaTime, Time.time) : 게임이 실행되지 않으면 시간이 흐르지 않아서 관련 값이 유효하지 않습니다.
+- 물리엔진 (Rigidbody, Collider) : 게임이 실행되지 않으면 물리 계산이 진행되지 않기 때문에 관련 함수들이 작동하지 않습니다.
+- Awake(), Start() : 게임이 실행되지 않으면 호출되지 않습니다.
+
+3. 작동하는 조건
+▷ Scene 뷰에서 오브젝트가 선택되거나, 편집될 때만 코드가 실행됩니다.
+	오브젝트가 이동되거나, 회전되거나, 스케일이 변경되면 Unity는 자동으로 오브젝트를 다시 계산하고, 이에 따라 **Update()**나 OnDrawGizmos() 등의 함수가 호출됩니다.
+▷ 게임 화면에서 클릭하거나 인스펙터의 값 변경도 코드 실행을 유발할 수 있습니다.
+	게임 화면 클릭 또는 인스펙터에서 값을 변경할 때, Unity는 해당 오브젝트나 컴포넌트를 갱신하고 Update() 같은 함수가 실행됩니다.
+▷ 정기적인 업데이트 호출은 EditorApplication.update 이벤트를 사용하면 강제로 호출할 수 있습니다.
+	EditorApplication.update 이벤트를 사용하면 게임 실행 여부와 관계없이 코드가 주기적으로 실행되게 할 수 있습니다.
+
+주기적 업데이트
+EditorApplication.update
+
+ex)
+using UnityEngine;
+using UnityEditor;
+
+[ExecuteInEditMode]
+public class TestScript : MonoBehaviour
+{
+    private void OnEnable()
+    {
+        // 에디터 모드에서도 Update처럼 실행되게 하기 위해
+        EditorApplication.update += EditorUpdate;
+    }
+
+    private void OnDisable()
+    {
+        // 비활성화될 때 EditorUpdate를 제거
+        EditorApplication.update -= EditorUpdate;
+    }
+
+    private void EditorUpdate()
+    {
+        // 에디터 모드에서 실시간으로 실행
+        Debug.Log("Editor Update called in Edit Mode");
+    }
+}
+
+추가 팁
+- 에디터 전용 코드가 필요하다면, 
+EditorApplication.update나 OnDrawGizmos() 같은 에디터 이벤트를 활용하여 에디터에서만 실행되는 코드를 작성할 수 있습니다.
