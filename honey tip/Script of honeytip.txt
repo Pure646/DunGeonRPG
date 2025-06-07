@@ -1,0 +1,11 @@
+각각의 GameObject에다가 Script를 사용하는 이유는 개인이 가지고 있는 Component를 불러오는 것이 매우 몹시 효율적이다.
+굳이 다른 Script에서 GameObject.Find() 계열을 사용해서 가져오는 것은 효율이 떨어질수 있으니 가급적으로 적게 사용하는 것이 좋다.
+// 매 프레임으로 new 를 사용하거나, Instantiate() 로 복제 혹은 Destroy() 로 파괴하는 등도 좋지않음. (상황에 맞춰서 사용바람)
+// Find()를 반복 호출은 비추
+
+static 	: 직렬
+(다른 script에서도  GameObject를 붙이지 않아도 사용할수 있게 해준다.)
+
+public 	: 병렬
+(GameObject를 붙여서 사용도 가능하면서 다른 Script가 사용할수 있게금 공유가 가능한다.)
+(하지만, 모든 Script 가 공유하지 않고 각각 Script가 가지는 입력값이 된다.)
