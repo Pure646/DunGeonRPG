@@ -1,0 +1,27 @@
+내부 버퍼의 크기(용량)를 지정하는 어트리뷰트
+네이티브 컬렉션이 처음 생성될 때, 내부적으로 고정 크기의 버퍼를 미리 할당해서
+동적 메모리 할당을 줄이고 성능을 최적화하기 위한 용도로 사용된다.
+
+ex)
+using Unity.Collections;
+using Unity.Collections.LowLevel.Unsafe;
+
+[InternalBufferCapacity(8)]
+public struct MyNativeList<T> where T : struct
+{
+    // 내부 버퍼 크기 8로 설정
+    public NativeList<T> list;
+
+    public MyNativeList(Allocator allocator)
+    {
+        list = new NativeList<T>(allocator);
+    }
+}
+
+
+항목			설명
+
+용도			내부 버퍼 크기 지정
+효과			동적 할당 감소 → 성능 최적화
+적용 대상			NativeList, NativeQueue 등 네이티브 컬렉션
+Unity 환경		주로 DOTS 및 고성능 코드 작성 시 사용
