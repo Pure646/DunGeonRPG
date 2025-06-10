@@ -8,7 +8,7 @@ num	: 숫자
 ex)
 int num = 123;
 string numAsString = num.ToString();
-Debug.Log(numAsString); /				/ 출력: "123"
+Debug.Log(numAsString); 				// 출력: "123"
 
 
 - 숫자의 표시 형식을 지정하는 데에도 사용할 수 있다.
@@ -25,3 +25,10 @@ ex)
 int number = 1234567;
 string formattedNumber = number.ToString("N0");  	// 천 단위 구분 기호 추가
 Debug.Log(formattedNumber); 			// 출력: "1,234,567"
+
+
+ex)
+// "D2" 포맷을 사용하여 두 자릿수로 표시
+string formattedHours = hours.ToString("D2");   	// "05"
+string formattedMinutes = minutes.ToString("D2"); 	// "07"
+string formattedSeconds = seconds.ToString("D2"); 	// "03"

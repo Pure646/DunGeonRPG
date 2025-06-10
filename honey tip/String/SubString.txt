@@ -1,0 +1,13 @@
+부분 문자열을 추출하는 메서드.
+
+ex)
+string str = "Hello, World!";
+string result = str.Substring(7);  		// "World!"
+
+처음부터 7번 인덱스까지 잘라냄.
+
+ex)
+string str = "Hello, World!";
+string result = str.Substring(7, 5);  		// "World"
+
+7번 인덱스부터 5글자를 잘라냄.
