@@ -1,0 +1,21 @@
+자료형과 거의 같은 뜻으로 사용되며,
+
+변수, 함수, 객체 등이 어떤 종류의 데이터를 다루는지 명시하는 개념입니다.
+
+ex)
+[ 사용자 정의 타입 ]
+class Player		클래스 (참조 타입)
+struct EnemyData		구조체 (값 타입)
+enum State		열거형 타입
+interface IDamageable	인터페이스 타입
+
+[ 구조체 타입 ] (값 타입)
+Vector2, Vector3		Unity에서 위치/방향 표현
+Color			Unity에서 색상 표현
+DateTime			시간/날짜 표현
+
+[ 참조 타입 ]
+string			문자열
+object			모든 타입의 부모 타입
+class			사용자 정의 타입
+array			배열 (예: int[])

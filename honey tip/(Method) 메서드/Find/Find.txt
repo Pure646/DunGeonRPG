@@ -1,0 +1,13 @@
+Transform.Find(string name)			Transform		자식 오브젝트 이름으로 찾기	
+ex)
+transform.Find("Child")
+
+
+GameObject.Find(string name)		GameObject		씬 전체에서 이름으로 찾기	
+ex)
+GameObject.Find("Enemy")
+
+
+List<T>.Find(Predicate<T>)			컬렉션 메서드		조건에 맞는 첫 항목 찾기	
+ex)
+list.Find(x => x > 5)

@@ -1,0 +1,5 @@
+GameObject.FindWithTag(string tag)
+태그가 지정된 첫 번째 GameObject를 찾음
+
+ex)
+GameObject enemy = GameObject.FindWithTag("Enemy");

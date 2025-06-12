@@ -1,0 +1,14 @@
+[ 구조체(struct) ]
+설명	: 여러 변수(필드)를 묶어서 하나의 데이터 타입으로 만드는 사용자 정의 값 타입
+역할	: 관련된 데이터를 그룹화해서 효율적으로 관리할 때 쓰며, 주로 작은 데이터 묶음에 적합.
+
+ex)
+public struct Vector2 {
+    public float x;
+    public float y;
+    
+    public Vector2(float x, float y) {
+        this.x = x;
+        this.y = y;
+    }
+}

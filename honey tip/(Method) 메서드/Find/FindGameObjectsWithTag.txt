@@ -1,0 +1,5 @@
+GameObject.FindGameObjectsWithTag(string tag)
+태그가 지정된 모든 GameObject를 배열로 반환
+
+ex)
+GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");

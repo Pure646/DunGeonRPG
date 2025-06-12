@@ -1,3 +1,0 @@
-Transform.Find(string name)
-
-직계 자식만 찾습니다.

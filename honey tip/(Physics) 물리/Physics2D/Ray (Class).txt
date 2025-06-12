@@ -1,0 +1,7 @@
+[ Ray 클래스 ]
+unityEngine.Ray
+"레이(광선)" 자체를 나타내는 구조체(struct)
+시작점(origin)과 방향(direction)을 가진다.
+
+ex)
+Ray ray = new Ray(transform.position, transform.forward);

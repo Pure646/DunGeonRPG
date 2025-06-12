@@ -1,0 +1,5 @@
+Object.FindObjectOfType<T>()
+씬 내에서 특정 타입의 컴포넌트를 하나 찾음 (첫 번째 발견된 것 반환)
+
+ex)
+Camera cam = Object.FindObjectOfType<Camera>();

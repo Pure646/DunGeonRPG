@@ -1,4 +1,4 @@
-선언
+System.Collections.Generic 네임스페이스에 있는 클래스
 
 List<int> numbers = new List<int>(); 		// int형 숫자 리스트
 List<string> names = new List<string>(); 	// string 리스트
@@ -6,7 +6,7 @@ List<string> names = new List<string>(); 	// string 리스트
 
 메서드/속성		설명
 
-Add(item)			값 추가
+Add(item)		값 추가
 Insert(index, item)		특정 위치에 값 삽입
 Remove(item)		값 제거
 RemoveAt(index)		해당 위치 값 제거

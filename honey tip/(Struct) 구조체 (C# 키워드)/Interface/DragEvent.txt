@@ -1,0 +1,21 @@
+IBeginDragHandler			드래그 시작할 때			마우스로 클릭하고 끌기 시작할때 1번 호출
+IDragHandler			드래그 중 매 프레임		마우스를 움직이는 동안 계속 호출
+IEndDragHandler			드래그 끝났을 때			마우스를 놓을 때 1번 호출
+
+ex)
+public class UIDragEvent : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+
+public void OnBeginDrag(PointerEventData eventData)
+{
+    Debug.Log("드래그 시작");
+}
+
+public void OnDrag(PointerEventData eventData)
+{
+    Debug.Log("드래그 중...");
+}
+
+public void OnEndDrag(PointerEventData eventData)
+{
+    Debug.Log("드래그 종료");
+}

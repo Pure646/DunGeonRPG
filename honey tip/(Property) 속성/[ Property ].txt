@@ -1,0 +1,31 @@
+[ 속성 ]
+설명 	: 클래스나 구조체의 데이터를 간접적으로 읽거나 쓸 수 있게 하는 멤버
+역할	: 필드(변수)를 보호하면서 값을 읽거나 설정할 때 get 과 set으로 접근을 제어할 수 있다.
+
+ex)
+public class Player
+{
+    // 실제 데이터를 저장하는 private 필드
+    private int health;
+
+    // health 필드에 접근하기 위한 public 속성
+    public int Health
+    {
+        get
+        {
+            // health 값을 읽을 때 실행되는 코드
+            return health;
+        }
+        set
+        {
+            // health 값을 설정할 때 실행되는 코드
+            // 예를 들어, 0보다 작거나 100보다 크면 값을 제한
+            if (value < 0)
+                health = 0;
+            else if (value > 100)
+                health = 100;
+            else
+                health = value;
+        }
+    }
+}

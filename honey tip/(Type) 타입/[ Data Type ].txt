@@ -1,0 +1,26 @@
+[ 자료형 / 데이터형 ] - Data Type
+정의:
+메모리에 저장되는 데이터가 어떤 종류이고, 어떻게 해석되어야 하는지를 나타내는 분류입니다.
+
+역할:
+컴퓨터가 데이터를 저장하고 처리하는 방식을 알려주고, 올바른 연산을 가능하게 합니다.
+
+ex)
+기본형: int, float, bool, char
+
+참조형: string, class, array
+
+
+
+[ 값 타입 ] - Value Type
+변수에 실제 데이터가 저장됨.
+
+ex)
+int , float , struct,...
+
+
+[ 참조 타입 ] - Reference Type
+변수에 데이터가 저장된 메모리 주소(참조)가 저장됨.
+
+ex)
+class, string, array,...

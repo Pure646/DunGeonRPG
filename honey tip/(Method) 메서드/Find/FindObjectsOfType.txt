@@ -1,0 +1,5 @@
+Object.FindObjectsOfType<T>()
+씬 내에서 특정 타입의 컴포넌트나 오브젝트를 모두 찾음.
+
+ex)
+Light[] allLights = Object.FindObjectsOfType<Light>();
