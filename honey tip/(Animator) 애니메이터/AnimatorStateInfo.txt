@@ -1,0 +1,14 @@
+Animator.GetCurrentAnimatorStateInfo(int layerIndex)					// 현재 사용할 애니메이터 레이어 인덱스
+
+AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);			// 선언
+
+
+프로퍼티				설명
+
+IsName(string name)		현재 상태의 이름이 name과 같은지 확인
+normalizedTime			현재 애니메이션이 얼마나 진행됐는지를 0.0 ~ 1.0 이상의 값으로 반환 (루프 애니메이션은 1 이상도 가능)
+length				애니메이션 클립의 실제 길이 (초 단위)
+loop				애니메이션이 루프 설정이 되어 있는지 여부
+fullPathHash			상태의 전체 경로 해시 값
+shortNameHash			상태 이름의 해시 값
+tagHash				상태에 지정된 태그의 해시 값

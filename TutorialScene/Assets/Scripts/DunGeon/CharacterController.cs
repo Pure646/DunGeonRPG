@@ -1,26 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
+    [SerializeField] private GameObject Weapon;
     private Rigidbody2D rigd;
     private Animator animator;
     private bool ChangeMagnitude;
-    [SerializeField] private float CharacterSpeed;
-    [SerializeField] private float CharacterMaxSpeed;
+    private float CharacterSpeed;
+    private float CharacterMaxSpeed;
     private int CharacterAttackCombo;
+    private int AttackCount;
+    private AnimatorStateInfo StateInfo;
     private void Start()
     {
         rigd = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        Weapon.gameObject.SetActive(false);
+        CharacterSpeed = 20;
+        CharacterMaxSpeed = 7;
     }
 
     private void Update()
     {
         animator.SetFloat("Velocity", Mathf.Abs(rigd.velocity.x));
         animator.SetInteger("AttackCombo", CharacterAttackCombo);
-        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);      // AnimatorStateInfo 알아오기.
+        if(CharacterAttackCombo != 0)                                   // 공격시 카운팅
+        {
+            AttackActionEnd();
+            //if(Weapon.gameObject.activeSelf == false)
+            //{
+            //    Weapon.gameObject.SetActive(true);
+            //}
+            if(CharacterSpeed != 10)
+            {
+                CharacterSpeed = 10;
+                CharacterMaxSpeed = 2.5f;
+            }
+        }
+        else if(CharacterSpeed != 20)
+        {
+            //if(Weapon.gameObject.activeSelf == true)
+            //{
+            //    Weapon.gameObject.SetActive(false);
+            //}
+            CharacterSpeed = 20;
+            CharacterMaxSpeed = 7f;
+        }
     }
     private void OnEnable()
     {
@@ -75,8 +104,24 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    private void AttackAction()
+    private void AttackAction()                         // Action 시작 + Count++
     {
-
+        if(CharacterAttackCombo < 3)
+        {
+            CharacterAttackCombo++;
+        }
+    }
+    private void AttackActionEnd()                      // Action 끝
+    {
+        StateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        if (StateInfo.IsName($"AttackCombo_{AttackCount + 1}") && StateInfo.normalizedTime > 0.95f) 
+        {
+            AttackCount++;
+        }
+        if(AttackCount >= CharacterAttackCombo)
+        {
+            CharacterAttackCombo = 0;
+            AttackCount = 0;
+        }
     }
 }
