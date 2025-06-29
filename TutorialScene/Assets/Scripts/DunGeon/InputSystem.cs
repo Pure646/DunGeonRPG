@@ -8,9 +8,18 @@ public class InputSystem : MonoBehaviour
     public static InputSystem Instance { get; private set; }
     public event Action<Vector2> CharacterMove;
     public event Action CharacterAttack;
+    public int wait;
     private void Awake()
     {
-        Instance = this;
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     private void Update()
     {
