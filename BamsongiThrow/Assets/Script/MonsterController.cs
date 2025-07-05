@@ -4,41 +4,58 @@ using UnityEngine;
 
 public class MonsterController : MonoBehaviour
 {
-    public GameObject Character;
-    [SerializeField] private float MonsterSpeed;
-    private CharacterController monsterCon;
+    private GameObject Character;
+    private Rigidbody monsterRigid;
+    private float MonsterSpeed;
+    private int Level = 1;
+    private int Point = 0;
+
     private void Start()
     {
-        Character = GameObject.Find("Character");
-        monsterCon = GetComponent<CharacterController>();
+        Character = GameObject.FindGameObjectWithTag("Character");
+        monsterRigid = GetComponent<Rigidbody>();
+        MonsterSpeed = 0.1f;
     }
+
     private void Update()
     {
-        MonsterMove();
-        MonsterRotate();
+        if(Point > 100 && Level == 1)
+        {
+            Level = 2;
+        }
     }
-    private void MonsterMove()
-    {
-        Vector3 direction = (Character.transform.position - transform.position).normalized;
-        monsterCon.Move(direction * MonsterSpeed * Time.deltaTime);
-    }
-    private void MonsterRotate()
-    {
-        transform.LookAt(Character.transform.position);
-    }
-    private void OnTriggerEnter(Collider other)
+    private void FixedUpdate()
     {
         if(PlayerMovement.CharacterHP > 0)
         {
-            if (other.CompareTag("Character"))
-            {
-                PlayerMovement.CharacterHP--;
-                Destroy(gameObject);
-            }
+            LevelSpeed();
+            MonsterMove();
+            MonsterRotate();
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+    private void MonsterMove()
+    {
+        Vector3 targetV = (Character.transform.position - transform.position).normalized;
+        transform.Translate(targetV * MonsterSpeed, Space.World);
+    }
+    private void MonsterRotate()
+    {
+        Vector3 target = new Vector3(Character.transform.position.x, 0, Character.transform.position.z);
+        transform.LookAt(target);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Character"))
+        {
+            Destroy(gameObject);
+        }
+    }
+    private void LevelSpeed()
+    {
+        MonsterSpeed *= Level;
     }
 }

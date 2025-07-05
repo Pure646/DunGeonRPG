@@ -5,19 +5,19 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public static float CharacterHP = 3f;
-    [SerializeField] private Camera cam;
     [SerializeField] private float CharacterSpeed;
+    [SerializeField] private float RotateSpeed;
     [SerializeField] private GameObject monsterPrefab;
-    private CharacterController characterController;
 
     private float moveX;
     private float moveY;
     private float moveZ;
-    [SerializeField] private float RotateSpeed;
+
+    [SerializeField] private float SpawnTime;
+    private float WaitTime;
     private void Awake()
     {
-        characterController = GetComponent<CharacterController>();
-        cam = GetComponent<Camera>();
+
     }
 
     private void Update()
@@ -25,11 +25,22 @@ public class PlayerMovement : MonoBehaviour
         if(CharacterHP > 0)
         {
             Charactermove();
-            CharacterRotate();
         }
-        if(CharacterHP > 0 && moveX == 0 && moveZ == 0 && Time.time >= 5f)
+        if(CharacterHP > 0 && Time.time >= 5f)
+        {
+            SetSpawnMonster();
+        }
+    }
+    private void SetSpawnMonster()
+    {
+        if(WaitTime > 0)
+        {
+            WaitTime -= Time.deltaTime;
+        }
+        else
         {
             Instantiate(monsterPrefab);
+            WaitTime = SpawnTime;
         }
     }
     private void Charactermove()
@@ -37,18 +48,22 @@ public class PlayerMovement : MonoBehaviour
         moveX = Input.GetAxis("Horizontal");
         moveZ = Input.GetAxis("Vertical");
         Vector3 move = transform.forward * moveZ + transform.right * moveX;
-        characterController.Move(move * CharacterSpeed * Time.deltaTime);
+        transform.Translate(move * Time.deltaTime * CharacterSpeed, Space.Self);
     }
     private void CharacterRotate()
     {
-        moveY = Input.GetKey(KeyCode.Q) ? -1f : Input.GetKey(KeyCode.E) ? 1f : 0f;
-        transform.Rotate(0, moveY * Time.deltaTime * RotateSpeed, 0);
+        if(Input.GetMouseButton(1))
+        {
+            // 마우스 초기값
+            // 마우스 이동값
+        }
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.CompareTag("Monster"))
+        if (collision.gameObject.tag == "Monster")
         {
             CharacterHP = -1f;
+            //Debug.Log("Hit");
         }
     }
 }
