@@ -7,7 +7,6 @@ TagManager:
   - Monster
   - Character
   - Weapon
-  - weapon
   layers:
   - Default
   - TransparentFX

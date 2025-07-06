@@ -23,6 +23,11 @@ public class MonsterController : MonoBehaviour
         {
             Level = 2;
         }
+
+        if (transform.position.y < -5f)
+        {
+            int Randomposition = Random.Range(0, 3);
+        }
     }
     private void FixedUpdate()
     {
@@ -50,6 +55,10 @@ public class MonsterController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Character"))
+        {
+            Destroy(gameObject);
+        }
+        if(collision.gameObject.CompareTag("Weapon"))
         {
             Destroy(gameObject);
         }

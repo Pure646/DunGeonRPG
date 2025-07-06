@@ -1,0 +1,14 @@
+terrain.terrainData란?
+Terrain.terrainData는 Unity에서 사용하는 TerrainData 클래스의 인스턴스를 의미해.
+이 안에는 지형의 모든 세부 정보가 저장돼 있어:
+
+
+속성/함수				설명
+size					지형의 실제 월드 크기 (Vector3)
+heightmapResolution		높이맵 해상도 (가로세로 픽셀 수)
+GetHeights()			높이 데이터를 배열로 받기
+GetHeight()			특정 위치의 높이값 얻기
+SetHeights()			높이 데이터를 수정
+GetAlphamaps()			텍스처 혼합 정보 얻기
+treeInstances			심어진 나무 정보
+detailResolution			풀/디테일 해상도
