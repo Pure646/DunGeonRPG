@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float CharacterSpeed;
     [SerializeField] private GameObject monsterPrefab;
     public static float CharacterHP;
+    public static int RoundStage;
 
     //--- terrain
     [SerializeField] private Terrain terrain;
