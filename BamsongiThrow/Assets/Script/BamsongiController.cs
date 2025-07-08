@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BamsongiController : MonoBehaviour
 {
+    private int GoldRandom;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,8 @@ public class BamsongiController : MonoBehaviour
         if(collision.gameObject.tag == "Monster")
         {
             GetComponent<Rigidbody>().isKinematic = true;
+            GoldRandom = Random.Range(50, 200);
+            PlayerMovement.GoldPoint += GoldRandom;
 
             Destroy(gameObject);
         }

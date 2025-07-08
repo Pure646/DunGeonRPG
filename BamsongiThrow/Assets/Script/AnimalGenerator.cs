@@ -24,7 +24,11 @@ public class AnimalGenearator : MonoBehaviour
     }
     private void Update()
     {
-        if(PlayerMovement.RoundStage > nowStage)
+        if(PlayerMovement.RoundStage == 0)
+        {
+            nowStage = 0;
+        }
+        if(PlayerMovement.RoundStage != nowStage)
         {
             nowStage = PlayerMovement.RoundStage;       // 해당 라운드로 초기화;
             for (int i = 0; i < Animal.Length; i++)
@@ -35,6 +39,11 @@ public class AnimalGenearator : MonoBehaviour
                 Vector3 AnimalSpawnVec = new Vector3(RandomX, AnimalY, RandomZ);
                 Instantiate(Animal[i], AnimalSpawnVec, Quaternion.identity);
             }
+        }
+        if(PlayerMovement.AnimalPoint == Animal.Length)
+        {
+            PlayerMovement.AnimalPoint = 0;
+            PlayerMovement.RoundStage++;
         }
     }
 }
