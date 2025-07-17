@@ -5,16 +5,17 @@ using UnityEngine;
 
 public class InputSystem : MonoBehaviour
 {
-    public static InputSystem Instance { get; private set; }
+    public static InputSystem Instance { get; set;}
+
     public event Action<Vector2> CharacterMove;
-    public event Action CharacterAttack;
-    public int wait;
+    public event Action<Vector2> CharacterStop;
+
+    public event Action CharacterRolls;
     private void Awake()
     {
         if(Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -23,23 +24,30 @@ public class InputSystem : MonoBehaviour
     }
     private void Update()
     {
-        Vector2 moveVector = Vector2.zero;
         if(Input.GetKey(KeyCode.LeftArrow))
         {
-            moveVector = Vector2.left;
+            CharacterMove?.Invoke(Vector2.left);
         }
-        else if(Input.GetKey(KeyCode.RightArrow))
+        if(Input.GetKeyUp(KeyCode.LeftArrow))
         {
-            moveVector = Vector2.right;
+            CharacterStop?.Invoke(Vector2.zero);
         }
-        if (moveVector != null)
+        if(Input.GetKey(KeyCode.RightArrow))
         {
-            CharacterMove?.Invoke(moveVector);
+            CharacterMove?.Invoke(Vector2.right);
         }
-        if(Input.GetKeyDown(KeyCode.Z))
+        if(Input.GetKeyUp(KeyCode.RightArrow))
         {
-            CharacterAttack?.Invoke();
+            CharacterStop?.Invoke(Vector2.zero);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            // มกวม
+        }
+        if(Input.GetKey(KeyCode.LeftControl))
+        {
+            CharacterRolls?.Invoke();
         }
     }
-    
 }

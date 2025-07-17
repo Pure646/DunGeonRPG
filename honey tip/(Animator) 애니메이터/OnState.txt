@@ -1,0 +1,5 @@
+OnStateEnter()	상태에 진입할 때
+OnStateUpdate()	상태에 머무는 동안 매 프레임 호출
+OnStateExit()	상태를 벗어날 때 호출
+OnStateMove()	루트 모션 제어 시 사용
+OnStateIK()	IK 처리용
