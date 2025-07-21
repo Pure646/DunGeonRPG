@@ -1,0 +1,14 @@
+어떤 방식으로 화면에 그릴지를 설정하는 곳
+
+속성이름			설명							예시
+Render Mode		파티클이 어떤 방식으로 그려질지 설정				Billboard: 항상 카메라를 바라보는 평면
+Material			파티클에 사용할 머티리얼 지정 (보통 투명한 텍스처)		연기 텍스처, 불꽃 이미지 등
+Sorting Layer		2D 스프라이트처럼 레이어 정렬을 위한 설정			UI 뒤에, 배경 앞에 등 설정
+Order in Layer		같은 Sorting Layer 안에서 순서 지정				숫자가 클수록 앞에 나옴
+Normal Direction		파티클이 어느 방향으로 빛을 받는지 설정			3D 조명 효과 필요할 때 사용
+Min Particle Size / 
+Max Particle Size		파티클이 카메라 가까워졌을 때 너무 커지거나 작아지는 걸 방지	화면 비율 유지
+Alignment		파티클의 회전 방식 설정 (View, World, Local)			폭죽 효과에서 회전 방향 제어
+Pivot			파티클의 기준점 위치 설정 (기본은 중앙)			날아가는 이펙트가 이상할 때 조정
+Cast Shadows / 
+Receive Shadows		파티클이 그림자를 만들거나 받을지 설정 (보통 2D에서는 꺼둠)	3D 환경에서만 사용
