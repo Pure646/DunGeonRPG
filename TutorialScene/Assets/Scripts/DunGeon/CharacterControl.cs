@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CharacterControl : MonoBehaviour
@@ -10,6 +11,11 @@ public class CharacterControl : MonoBehaviour
     private float CharacterMaxSpeed = 10f;           // 최대맥스 스피드
 
     private bool OnRolls = false;                           // 구르기
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 0;
+    }
     private void Start()
     {
         rig = GetComponent<Rigidbody2D>();
